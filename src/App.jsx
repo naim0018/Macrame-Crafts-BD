@@ -7,7 +7,6 @@ function App() {
     <>
      
       <MainLayout>
-        <Banner></Banner>
         <Outlet />
       </MainLayout>
     </>
