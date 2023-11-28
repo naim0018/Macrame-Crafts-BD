@@ -8,10 +8,9 @@ function App() {
     <>
      
       <MainLayout>
-        <Banner></Banner>
         <Outlet />
-        <Footer></Footer>
       </MainLayout>
+      <Footer></Footer>
     </>
   );
 }
