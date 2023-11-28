@@ -1,11 +1,11 @@
 import React from 'react';
-import Loading from '../Loading/Loading';
-
+import Banner from '../Banner/Banner/Banner';
+import Featured from '../Featured/Featured';
 const Home = () => {
     return (
         <div>
-            <h1>inside Home</h1>
-            {/* <Loading></Loading> */}
+            <Banner/> 
+            <Featured/>
         </div>
     );
 };
