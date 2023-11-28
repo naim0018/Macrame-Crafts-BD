@@ -1,12 +1,13 @@
 import React from 'react';
-import Loading from '../Loading/Loading';
-import Banner from '../Banner/Banner/Banner';
 
+import Banner from '../Banner/Banner/Banner';
+import Featured from '../Featured/Featured';
+import Loading from '../Loading/Loading';
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
-            {/* <Loading></Loading> */}
+            <Banner/> 
+            <Featured/>
         </div>
     );
 };
