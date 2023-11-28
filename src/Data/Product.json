@@ -1,0 +1,87 @@
+[
+    {
+      "id": 1,
+      "name": "Macrame wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/cXH8QTr/product1.jpg",
+      "height": "2.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 1",
+      "price": 1100,
+      "discountPrice": 1050,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 2,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/GnSv50C/product2.jpg",
+      "height": "2.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 2",
+      "price": 1100,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 3,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/KVN7mKt/product3.jpg",
+      "height": "2.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 3",
+      "price": 1100,
+      "discountPrice": 1050,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 4,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/pX6FK6G/product4.jpg",
+      "height": "3.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 4",
+      "price": 1400,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 5,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/F4KTHPk/product5.jpg",
+      "height": "3.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 5",
+      "price": 1400,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 6,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/ns0gRQ7/product6.jpg",
+      "height": "3.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 6",
+      "price": 1400,
+      "discountPrice": 1250,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 7,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/HFKVvxT/product7.jpg",
+      "height": "3.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 7",
+      "price": 1400,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    },
+    {
+      "id": 8,
+      "name": "Macrame Wall hanging crafts single Layer",
+      "image": "https://i.ibb.co/3TBdc5R/product8.jpg",
+      "height": "3.5 feet",
+      "width": "20 inches",
+      "description": "Description of Product 8",
+      "price": 1400,
+      "discountPrice": 1250,
+      "material": ["Cotton rope", "Kerasin Wood"]
+    }
+   
+  ]

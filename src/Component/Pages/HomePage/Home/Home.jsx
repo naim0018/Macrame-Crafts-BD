@@ -1,13 +1,15 @@
 import React from 'react';
-
-import Banner from '../Banner/Banner/Banner';
 import Featured from '../Featured/Featured';
+import Banner from '../../Banner/Banner/Banner';
+import HotDeals from '../HotDeals/HotDeals';
+
 
 const Home = () => {
     return (
         <div>
             <Banner/> 
             <Featured/>
+            <HotDeals/>
         </div>
     );
 };
