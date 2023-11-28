@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import MainLayout from "./Component/MainLayout/MainLayout";
 import Banner from "./Component/Pages/Banner/Banner/Banner";
+import Footer from "./Component/Footer/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <MainLayout>
         <Banner></Banner>
         <Outlet />
+        <Footer></Footer>
       </MainLayout>
     </>
   );
