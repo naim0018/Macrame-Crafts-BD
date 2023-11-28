@@ -1,10 +1,11 @@
 import React from 'react';
 import Loading from '../Loading/Loading';
+import Banner from '../Banner/Banner/Banner';
 
 const Home = () => {
     return (
         <div>
-            <h1>inside Home</h1>
+            <Banner></Banner>
             {/* <Loading></Loading> */}
         </div>
     );
