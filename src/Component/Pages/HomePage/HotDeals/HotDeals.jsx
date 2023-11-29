@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useData from '../../../../hooks/useData';
+import Cards from '../../Common/Cards/Cards';
 
 
 const HotDeals = () => {
-    const data=useData();
-    console.log(data)
+    // const [products,setProducts]=useState([])
+    const data = useData();
+    const products =data.filter(item=>item.discountPrice !== undefined)
+    console.log(products)
     return (
         <div className='container mx-auto'>
             <div className="text-center w-1/2 mx-auto">
@@ -13,9 +16,10 @@ const HotDeals = () => {
             </div>
 
             {/* Cards */}
-            <div className="">
-
-
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 border justify-items-center">
+                {
+                    products?.map(data => <Cards key={data.id} data={data}/>)                   
+                }
             </div>
         </div>
     );

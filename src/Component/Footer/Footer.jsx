@@ -11,7 +11,7 @@ const Footer = () => {
             className="w-16 rounded-full"
             src="https://i.ibb.co/YpDz3JN/macrime-logo.png"
             alt=""
-            srcset=""
+            
           />
           <p>
             Macrame Carfts BD.
