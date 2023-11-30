@@ -1,33 +1,52 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 
-const Cards = ({data}) => {
-    
-    const {id, name, image, height, width, description, price , discountPrice, meterial} = data;
+const Cards = ({ data }) => {
+  const {
+    id,
+    name,
+    image,
+    height,
+    width,
+    description,
+    price,
+    discountPrice,
+    meterial,
+  } = data;
 
-    
-    return (
-        <div>
-            <div className="w-80 border border-black">
-                {/* image  */}
-                <div className="grid relative ">
-                <img className='place-self-center border drop-shadow-lg bg-transparent' src={image} alt="" />
-                </div>
-                {/* title  */}
-                <div className="p-5">
-                    <h2 className='my-5 text-lg font-medium'>{name}</h2>
-                    <p className='my-5 text-sm text-gray-400'>{description}</p>
-                    <hr className='border border-black'/>
-                </div>
-                {/* Price  */}
-                <div className="p-5">
-                    <p className='text-lg font-medium'>${price}</p>
-
-                </div>
-
-            </div>
+  return (
+    <div className="border border-black rounded-lg">
+      {/* <div className="w-full  border outline outline-1 border-b-4 border-r-4 border-transparent hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden"
+      > */}
+      <div className="w-full  border border-b-4 border-r-4 border-transparent  hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden"
+      >
+        {/* image  */}
+        <div className="grid relative">
+          <img
+            className="place-self-center border drop-shadow-lg bg-transparent"
+            src={image}
+            alt=""
+          />
         </div>
-    );
+        {/* title  */}
+        <div className="p-5">
+          <h2 className="my-5 text-lg font-medium">{name}</h2>
+          <p className="my-5 text-sm text-gray-400">{description}</p>
+          <hr className="border border-black" />
+        </div>
+        {/* Price  */}
+        <div className="p-5 flex items-center justify-center gap-5">
+            <div className=" flex items-center justify-center gap-2">
+          <del className="text-sm">${price}</del>
+            <p className="text-lg font-medium">${discountPrice}</p>
+            </div>
+          <div className="">
+            <button className="btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Cards;

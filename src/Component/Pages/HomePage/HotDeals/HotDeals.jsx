@@ -16,7 +16,7 @@ const HotDeals = () => {
             </div>
 
             {/* Cards */}
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 border justify-items-center">
+            <div className="w-5/6 mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-5 border justify-items-center">
                 {
                     products?.map(data => <Cards key={data.id} data={data}/>)                   
                 }
