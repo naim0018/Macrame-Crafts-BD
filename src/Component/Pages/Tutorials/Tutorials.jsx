@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Tutorials = () => {
   const [tutorials, setTutorials] = useState([]);
 
   useEffect(() => {
-    fetch('Tutorial.json') // Ensure the file path is correct
-      .then(res => res.json())
-      .then(data => {
+    fetch("Tuturial.json") //  Json file path is Name
+      .then((res) => res.json())
+      .then((data) => {
         setTutorials(data);
-        console.log(data); // Move console.log here to properly log fetched data
+        console.log(data); //  properly log fetched data
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
 
   return (
     <div>
-      <h1>Connected</h1>
-      {/* Render your tutorials here */}
-      <ul>
-        {tutorials.map(tutorial => (
-          <li key={tutorial.id}>
-            <h2>{tutorial.title}</h2>
-            <p>{tutorial.description}</p>
-            {/* Add other tutorial information you want to display */}
-          </li>
-        ))}
-      </ul>
+      <h1>Tutorials</h1>
+      
     </div>
   );
 };
