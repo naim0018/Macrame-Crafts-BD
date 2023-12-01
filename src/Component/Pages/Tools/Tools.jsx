@@ -1,25 +1,14 @@
 
-import  { useState, useEffect } from "react";
+
+import useToolsData from "../../../hooks/useToolsData";
 import ToolCard from "../Common/ToolCard/ToolCard";
 const Tools = () => {
-    const [tutorials, setTutorials] = useState([]);
-
-    useEffect(() => {
-      fetch("Tuturial.json") //  Json file path is Name
-        .then((res) => res.json())
-        .then((data) => {
-          setTutorials(data);
-          console.log(data); //  properly log fetched data
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    }, []);
+  const tools =useToolsData()
     return (
         <div>
-             <div className=" border  container mx-auto my-10 place-content-center drop-shadow-lg shadow-lg">
+             <div className="container mx-auto my-10 place-content-center space-y-5">
       {
-        tutorials.map(tutorial => <ToolCard key={tutorial.id} tutorial ={tutorial}/>)
+        tools.map(tool => <ToolCard key={tool.id} tool={tool}/>)
       }
       </div>
         </div>

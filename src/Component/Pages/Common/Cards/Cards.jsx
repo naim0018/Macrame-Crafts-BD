@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Cards = ({ data }) => {
   const {
@@ -41,7 +42,9 @@ const Cards = ({ data }) => {
             <p className="text-lg font-medium">${discountPrice}</p>
             </div>
           <div className="">
-            <button className="btn">Add to Cart</button>
+            <Link to='/cardDetails/:{id}'>
+            <button className="btn">Details</button>
+            </Link>
           </div>
         </div>
       </div>
