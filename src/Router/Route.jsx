@@ -5,6 +5,7 @@ import Error from "../Component/Pages/ErrorElement/Error";
 import Products from "../Component/Pages/Products/Products";
 import Home from "../Component/Pages/HomePage/Home/Home";
 import Tutorials from "../Component/Pages/Tutorials/Tutorials";
+import Tools from "../Component/Pages/Tools/Tools";
 
 const router=createBrowserRouter([
     {
@@ -21,9 +22,13 @@ const router=createBrowserRouter([
                 element:<Products/>
             },
             {
-                path:'tutorials',
-                element:<Tutorials/>
+                path:'tools',
+                element:<Tools/>
             },
+            {
+                path:'tutorials',
+                element:<Tutorials/>  
+            }
         ]
     }
 ])
