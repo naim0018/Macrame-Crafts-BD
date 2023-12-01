@@ -18,12 +18,12 @@ const Cards = ({ data }) => {
     <div className="border border-black rounded-lg">
       {/* <div className="w-full  border outline outline-1 border-b-4 border-r-4 border-transparent hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden"
       > */}
-      <div className="w-full border-b-4 border-r-4 border-transparent  hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden transition-all  ease-in-out"
+      <div className="w-full border-b-4 border-r-4 border-transparent group hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden transition-all  ease-in-out"
       >
         {/* image  */}
         <div className="grid relative">
           <img
-            className="place-self-center border drop-shadow-lg bg-transparent mt-4 hover:scale-105 transition-all ease-in-out"
+            className="place-self-center  bg-transparent mt-4 group-hover:scale-110 transition-all ease-in-out"
             src={image}
             alt=""
           />
