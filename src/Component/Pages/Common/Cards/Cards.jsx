@@ -42,7 +42,7 @@ const Cards = ({ data }) => {
             <p className="text-lg font-medium">${discountPrice}</p>
             </div>
           <div className="">
-            <Link to='/cardDetails/:{id}'>
+            <Link to={`/cardDetails/${id}`}>
             <button className="btn">Details</button>
             </Link>
           </div>
