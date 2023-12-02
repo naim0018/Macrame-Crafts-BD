@@ -6,6 +6,7 @@ import Products from "../Component/Pages/Products/Products";
 import Home from "../Component/Pages/HomePage/Home/Home";
 import Tutorials from "../Component/Pages/Tutorials/Tutorials";
 import Tools from "../Component/Pages/Tools/Tools";
+import CardDetails from "../Component/Pages/Common/Details/CardDetails";
 
 const router=createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router=createBrowserRouter([
             {
                 path:'tutorials',
                 element:<Tutorials/>  
+            },
+            {
+                path:`cardDetails/:id`,
+                element:<CardDetails/>
             }
         ]
     }
