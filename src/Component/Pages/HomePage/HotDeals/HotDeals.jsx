@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+
 import useData from '../../../../hooks/useData';
 import Cards from '../../Common/Cards/Cards';
 
 
 const HotDeals = () => {
-    // const [products,setProducts]=useState([])
     const data = useData();
-    const products =data.filter(item=>item.discountPrice !== undefined)
+    console.log(data)
+    const products =data?.filter(item=>item.discountPrice !== undefined)
     console.log(products)
     return (
         <div className='container mx-auto my-10'>

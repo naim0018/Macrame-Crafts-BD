@@ -2,7 +2,6 @@ import React from "react";
 
 const ToolCard = ({ tool }) => {
   const { img, title , number, description  } = tool;
-  console.log(img);
   return (
     <div className=" grid grid-cols-3 shadow-md p-8 gap-5">
       <div className=" ">
