@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Cards = ({ data }) => {
   const {
     id,
-    name,
+    title,
     image,
     height,
     width,
@@ -31,7 +31,7 @@ const Cards = ({ data }) => {
         </div>
         {/* title  */}
         <div className="p-5">
-          <h2 className="my-5 text-lg font-medium">{name}</h2>
+          <h2 className="my-5 text-lg font-medium">{title}</h2>
           <p className="my-5 text-sm text-gray-400">{description}</p>
           <hr className="border border-black" />
         </div>
