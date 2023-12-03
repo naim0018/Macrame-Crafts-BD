@@ -30,9 +30,11 @@ const Cards = ({ data }) => {
           />
         </div>
         {/* title  */}
-        <div className="p-5">
+        <div className="p-5 flex flex-col border">
           <h2 className="my-5 text-lg font-medium">{title}</h2>
+          <div className="flex-grow ">
           <p className="my-5 text-sm text-gray-400">{description}</p>
+          </div>
           <hr className="border border-black" />
         </div>
         {/* Price  */}
