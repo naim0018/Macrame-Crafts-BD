@@ -67,7 +67,7 @@ const CardDetails = () => {
                 <div className="">
                   <div className="flex gap-4 items-center w-fit">
                     <p className="text-4xl font-medium flex items-center text-emerald-400"><TbCurrencyTaka />{discountPrice}</p>
-                    <del className="flex items-center text-red-400"> <TbCurrencyTaka />{price}</del>
+                    <del className=" text-red-400">৳{price}</del>
                   </div>
                 </div>
               ) : (
@@ -76,7 +76,7 @@ const CardDetails = () => {
                 </p>
               )}
               <div className="">
-                <button className="btn btn-lg bg-yellow-300 mt-8">Add to Cart</button>
+                <button className="btn btn-lg bg-yellow-300 mt-8 hover:bg-emerald-400 hover:text-white">Add to Cart</button>
               </div>
             </div>
           </div>

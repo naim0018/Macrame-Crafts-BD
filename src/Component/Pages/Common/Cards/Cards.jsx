@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { TbCurrencyTaka } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const Cards = ({ data }) => {
@@ -48,16 +49,16 @@ const Cards = ({ data }) => {
           {
             discountPrice ?
           <div className=" flex items-center justify-center gap-2">
-            <del className="text-sm">${price}</del>
-            <p className="text-lg font-medium">${discountPrice}</p>
+            <del className="text-sm text-red-400 ">৳{price}</del>
+            <p className="text-2xl font-medium flex items-center"><TbCurrencyTaka />{discountPrice}</p>
           </div>
           :
-          <p className="text-sm">${price}</p>
+          <p className="text-2xl font-medium flex items-center"><TbCurrencyTaka />{price}</p>
 
           }
           <div className="">
             <Link to={`/cardDetails/${id}`}>
-              <button className="btn">Details</button>
+              <button className="btn bg-emerald-400 hover:bg-yellow-400">Details</button>
             </Link>
           </div>
         </div>
