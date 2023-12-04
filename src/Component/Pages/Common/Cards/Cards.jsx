@@ -19,7 +19,7 @@ const Cards = ({ data }) => {
     <div className="border border-black rounded-lg">
       {/* <div className="w-full  border outline outline-1 border-b-4 border-r-4 border-transparent hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden"
       > */}
-      <div className="w-full border-b-4 border-r-4 border-transparent group hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden transition-all  ease-in-out"
+      <div className="w-full border-b-4 border-r-4 border-transparent group hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden transition-all  ease-in-out flex flex-col h-full"
       >
         {/* image  */}
         <div className="grid relative">
@@ -30,11 +30,13 @@ const Cards = ({ data }) => {
           />
         </div>
         {/* title  */}
-        <div className="p-5 flex flex-col border">
+        <div className="p-5 flex-grow ">
           <h2 className="my-5 text-lg font-medium">{title}</h2>
-          <div className="flex-grow ">
+          
           <p className="my-5 text-sm text-gray-400">{description}</p>
-          </div>
+        
+        </div>
+        <div className="px-5">
           <hr className="border border-black" />
         </div>
         {/* Price  */}
