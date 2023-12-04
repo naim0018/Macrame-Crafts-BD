@@ -56,9 +56,9 @@ const Cards = ({ data }) => {
           <p className="text-2xl font-medium flex items-center"><TbCurrencyTaka />{price}</p>
 
           }
-          <div className="">
+          <div className="border rounded-lg border-black">
             <Link to={`/cardDetails/${id}`}>
-              <button className="btn bg-emerald-400 hover:bg-yellow-400">Details</button>
+              <button className="btn bg-white border border-b-4 border-r-4 border-transparent  hover:bg-white hover:border-r-4 hover:border-b-4 hover:border-r-black hover:border-b-black ">Details</button>
             </Link>
           </div>
         </div>
