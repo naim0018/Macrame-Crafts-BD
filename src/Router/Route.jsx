@@ -7,6 +7,10 @@ import Home from "../Component/Pages/HomePage/Home/Home";
 import Tutorials from "../Component/Pages/Tutorials/Tutorials";
 import Tools from "../Component/Pages/Tools/Tools";
 import CardDetails from "../Component/Pages/Common/Details/CardDetails";
+import DashBoard from "../Component/Dashboard/DashBoard";
+import Order from "../Component/Pages/AdminDashboard/Order/Order";
+import Addproduct from "../Component/Pages/AdminDashboard/AddProduct/Addproduct";
+import PaymentHistroy from "../Component/Pages/AdminDashboard/PaymentHistroy/PaymentHistroy";
 
 const router=createBrowserRouter([
     {
@@ -16,24 +20,43 @@ const router=createBrowserRouter([
         children:[
             {
                 index:true,
-                element:<Home/>
+                element:<Home/>,
             },
             {
                 path:'products',
-                element:<Products/>
+                element:<Products/>,
             },
             {
                 path:'tools',
-                element:<Tools/>
+                element:<Tools/>,
             },
             {
                 path:'tutorials',
-                element:<Tutorials/>  
+                element:<Tutorials/>, 
             },
             {
                 path:`cardDetails/:id`,
-                element:<CardDetails/>
-            }
+                element:<CardDetails/>,
+            },
+        
+        ]
+    },
+    {
+        path:'dashboard',
+        element:<DashBoard/>,
+        children:[
+            {
+                path:'/dashboard/order',
+                element:<Order/>
+            },
+            {
+                path:'/dashboard/addproduct',
+                element:<Addproduct/>,
+            },
+            {
+                path:'/dashboard/paymenthistroy',
+                element:<PaymentHistroy/>,
+            },
         ]
     }
 ])
