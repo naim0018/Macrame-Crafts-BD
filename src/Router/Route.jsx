@@ -11,6 +11,8 @@ import DashBoard from "../Component/Dashboard/DashBoard";
 import Order from "../Component/Pages/AdminDashboard/Order/Order";
 import Addproduct from "../Component/Pages/AdminDashboard/AddProduct/Addproduct";
 import PaymentHistroy from "../Component/Pages/AdminDashboard/PaymentHistroy/PaymentHistroy";
+import Carts from "../Component/Pages/Carts/Carts";
+
 
 const router=createBrowserRouter([
     {
@@ -38,26 +40,31 @@ const router=createBrowserRouter([
                 path:`cardDetails/:id`,
                 element:<CardDetails/>,
             },
+            {
+                path:'cart',
+                element:<Carts/>
+            },
         
+            {
+                path:'dashboard',
+                element:<DashBoard/>,
+                children:[
+                    {
+                        path:'/dashboard/order',
+                        element:<Order/>
+                    },
+                    {
+                        path:'/dashboard/addproduct',
+                        element:<Addproduct/>,
+                    },
+                    {
+                        path:'/dashboard/paymenthistroy',
+                        element:<PaymentHistroy/>,
+                    },
+                   
+                ]
+            }
         ]
     },
-    {
-        path:'dashboard',
-        element:<DashBoard/>,
-        children:[
-            {
-                path:'/dashboard/order',
-                element:<Order/>
-            },
-            {
-                path:'/dashboard/addproduct',
-                element:<Addproduct/>,
-            },
-            {
-                path:'/dashboard/paymenthistroy',
-                element:<PaymentHistroy/>,
-            },
-        ]
-    }
 ])
 export default router;

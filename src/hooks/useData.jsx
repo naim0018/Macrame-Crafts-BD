@@ -1,15 +1,23 @@
+import { useEffect, useState } from "react";
 
-import { useEffect } from "react";
-import { useState } from "react";
 
 const useData = () => {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    fetch("./Product.json")
-      .then(res => res.json())
-      .then(data => setProducts(data))
-      .catch(error=>console.log(error))
-  },[]);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("../Product.json");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return products;
 };
 
