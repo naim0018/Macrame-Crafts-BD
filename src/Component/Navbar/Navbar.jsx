@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { FaShoppingBag } from "react-icons/fa";
 
 const Navbar = () => {
    
@@ -13,8 +14,10 @@ const Navbar = () => {
      <NavLink to='/tools'
      className={({isActive})=> isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"}>Tools</NavLink>
      <NavLink to='/tutorials'
-     className={({isActive})=> isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"}>Tutorials</NavLink>
-   
+     className={({isActive})=> isActive ? "p-4 text-red-500 " : "p-4  hover:text-red-500 "}>Tutorials</NavLink>
+    <NavLink to ='/cart' className={({isActive})=> isActive ? 'p-4 text-red-500 border rounded-full border-red-500 ': 'p-4 text-lg border rounded-full border-black hover:border-red-500 hover:text-red-500'}>
+    <FaShoppingBag />
+    </NavLink>
    </div>
    </>
 
