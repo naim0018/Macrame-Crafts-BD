@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const CardDetails = () => {
-  const [discount, setDiscount] = useState(false);
+  
+  const [amount,setAmount]=useState(1);
   const product = useData();
   const { id } = useParams();
   // console.log(product)
@@ -22,6 +23,16 @@ const CardDetails = () => {
   //   if (discountPrice) {
   //     setDiscount(true);
   //   }
+
+  const handleDecrement = () =>{
+    if(amount > 1){
+      setAmount(count=> count-1)
+    }
+    
+  }
+  const handleIncrement = () =>{
+     setAmount(count=> count+1);
+  }
 
   return (
     <div className="">
@@ -75,8 +86,16 @@ const CardDetails = () => {
                   <TbCurrencyTaka />{price}
                 </p>
               )}
-              <div className="">
-                <button className="btn btn-lg bg-yellow-300 mt-8 hover:bg-emerald-400 hover:text-white">Add to Cart</button>
+              <div className="flex items-center gap-4 mt-8">
+                <div className="">
+                <div className="border border-black w-fit  flex items-center gap-4">
+                <button onClick={handleDecrement} className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none ">-</button>
+                <p className="text-xl font-bold w-5 text-center">{amount}</p>
+                <button onClick={handleIncrement} className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none ">+</button>
+                </div>
+                </div>
+                
+                <button className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-white">Add to Cart</button>
               </div>
             </div>
           </div>

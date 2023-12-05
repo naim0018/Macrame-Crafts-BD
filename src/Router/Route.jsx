@@ -7,6 +7,7 @@ import Home from "../Component/Pages/HomePage/Home/Home";
 import Tutorials from "../Component/Pages/Tutorials/Tutorials";
 import Tools from "../Component/Pages/Tools/Tools";
 import CardDetails from "../Component/Pages/Common/Details/CardDetails";
+import Carts from "../Component/Pages/Carts/Carts";
 
 const router=createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router=createBrowserRouter([
             {
                 path:`cardDetails/:id`,
                 element:<CardDetails/>
+            },
+            {
+                path:'cart',
+                element:<Carts/>
             }
         ]
     }

@@ -58,7 +58,7 @@ const Cards = ({ data }) => {
           }
           <div className="border rounded-lg border-black">
             <Link to={`/cardDetails/${id}`}>
-              <button className="btn bg-white border border-b-4 border-r-4 border-transparent  hover:bg-white hover:border-r-4 hover:border-b-4 hover:border-r-black hover:border-b-black ">Details</button>
+              <button className="btn bg-white border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-black hover:border-b-black">Details</button>
             </Link>
           </div>
         </div>
