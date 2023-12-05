@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="">
           {/* Navbar */}
-          <div className="w-full  navbar bg-yellow-300">
+          <div className="w-full  navbar bg-yellow-300 ">
             <div className="w-full flex justify-between lg:hidden ">
               <div className="">
                 <label
@@ -44,11 +44,13 @@ const MainLayout = ({ children }) => {
 
             <div className="container mx-auto hidden lg:flex">
               <div className="flex-1 px-2 mx-2 ">
+                <Link to='/'>
                 <img
-                  className="border rounded-full w-16"
+                  className="border rounded-full w-16 cursor-pointer"
                   src="https://i.ibb.co/YpDz3JN/macrime-logo.png"
                   alt=""
                 />
+                </Link>
               </div>
 
               {/* Navbar */}
