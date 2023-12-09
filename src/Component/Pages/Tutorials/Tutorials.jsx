@@ -1,14 +1,23 @@
 import { Helmet} from "react-helmet-async";
+import useTutorialsData from "../../../hooks/useTutorialsData";
+import TutorialsCard from "../Common/TutorialsCard/TutorialsCard";
 
 const Tutorials = () => {
 
+  const tutorials = useTutorialsData();
+  console.log(tutorials)
 
   return (
     <div>
-      <h1>Tutorials</h1>
       <Helmet>
         <title>Macrame Crafts BD | Tutorials</title>
       </Helmet>
+      <div>
+        {
+          tutorials.map(data => <TutorialsCard key={data.id} data={data}></TutorialsCard>)
+        }
+      </div>
+
      
     </div>
   );
