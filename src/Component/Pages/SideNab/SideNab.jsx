@@ -1,6 +1,5 @@
 import React from "react";
 import {NavLink, Outlet } from "react-router-dom";
-import { GrUserAdmin } from "react-icons/gr";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { IoBagAddSharp } from "react-icons/io5";
 import { MdPayment } from "react-icons/md";
