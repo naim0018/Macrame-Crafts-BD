@@ -37,7 +37,7 @@ const CardDetails = () => {
   return (
     <div className="">
       {productId && (
-        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 my-10 justify-center">
+        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 my-10 justify-center bg-gray-600 text-white">
           <div className="grid">
             <img
               className="w-4/5 place-self-center"
