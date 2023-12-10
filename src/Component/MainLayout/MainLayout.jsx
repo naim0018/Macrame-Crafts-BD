@@ -6,9 +6,9 @@ const MainLayout = ({ children }) => {
     <div>
       <div className="">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        <div className="">
+        <div className="relative">
           {/* Navbar */}
-          <div className="w-full  navbar bg-yellow-300 ">
+          <div className="w-full  navbar bg-yellow-300 sticky top-0 z-20 ">
             <div className="w-full flex justify-between lg:hidden ">
               <div className="">
                 <label

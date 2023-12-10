@@ -39,11 +39,11 @@ const CardDetails = () => {
   return (
     <div className="">
       {productId && (
-        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center bg-gray-600 text-white">
+        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
             <Zoom>
             <img
-              className="w-4/5 place-self-center"
+              className="w-4/5 place-self-center  rounded-lg"
               src={image}
               alt={title}
               title={title}
@@ -99,7 +99,7 @@ const CardDetails = () => {
                 </div>
                 </div>
                 
-                <button className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-white">Add to Cart</button>
+                <button className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500">Add to Cart</button>
               </div>
             </div>
           </div>
