@@ -15,9 +15,9 @@ const Addproduct = () => {
   return (
     <>
       <div className="hero min-h-screen border-4 pb-24 mb-20">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+        <div className=" hero-content flex-col lg:flex-row-revers w-full">
+          <div className="card shrink-0  w-4/5 shadow-2xl bg-base-10">
+            <form className="card-body w-full">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Product Name</span>
@@ -30,14 +30,14 @@ const Addproduct = () => {
                 />
               </div>
               <div>
-                <span className="label-text">Categoary</span>
+                <span className="label-text">Category</span>
                 <Dropdown
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.value)}
                   options={cities}
                   optionLabel="name"
                   editable
-                  placeholder="Select a Categoary"
+                  placeholder="Select a Category"
                   className="w-full md:w-14rem input input-bordered"
                 />
               </div>
@@ -65,6 +65,7 @@ const Addproduct = () => {
                   required
                 />
               </div>
+              <div className="flex items-center justify-evenly ">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Height</span>
@@ -86,6 +87,7 @@ const Addproduct = () => {
                   className="input input-bordered"
                   required
                 />
+              </div>
               </div>
               <div className="form-control mt-6">
                 <button className="btn bg-yellow-400">Submit</button>
