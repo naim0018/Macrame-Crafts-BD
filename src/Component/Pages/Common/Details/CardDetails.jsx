@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import useData from "../../../../hooks/useData";
 import { useParams } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const CardDetails = () => {
   
@@ -37,14 +39,16 @@ const CardDetails = () => {
   return (
     <div className="">
       {productId && (
-        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 my-10 justify-center bg-gray-600 text-white">
+        <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center bg-gray-600 text-white">
           <div className="grid">
+            <Zoom>
             <img
               className="w-4/5 place-self-center"
               src={image}
               alt={title}
               title={title}
             />
+            </Zoom>
           </div>
           <div className="my-20  sticky top-10 h-fit">
             <div className="space-y-5">
