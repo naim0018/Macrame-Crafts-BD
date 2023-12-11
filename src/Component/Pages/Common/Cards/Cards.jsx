@@ -29,7 +29,7 @@ const Cards = ({ data }) => {
         {/* image  */}
         <div className="grid relative">
           <img
-            className="place-self-center  bg-transparent mt-4 group-hover:scale-110 transition-all ease-in-out"
+            className="place-self-center  bg-yellow-400 mt-4 group-hover:scale-110 transition-all ease-in-out"
             src={image}
             alt=""
           />
