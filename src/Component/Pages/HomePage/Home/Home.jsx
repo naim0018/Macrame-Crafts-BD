@@ -3,6 +3,7 @@ import Featured from '../Featured/Featured';
 import HotDeals from '../HotDeals/HotDeals';
 import Banner from '../Banner/Banner/Banner';
 import { Helmet } from 'react-helmet-async';
+import NewArrival from '../NewArrival/NewArrival';
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Banner/> 
             <Featured/>
             <HotDeals/>
+            <NewArrival/>
         </div>
     );
 };
