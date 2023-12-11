@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   return (
@@ -20,9 +21,11 @@ const Featured = () => {
             alt=""
           />
           <div className="absolute h-full w-full bg-black/10 flex items-center justify-center -bottom-full group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+            <Link to='cardDetails/1'>
             <button className="px-5 py-3 z-10 rounded-lg border bg-white text-lg font-medium">
               Details
             </button>
+            </Link>
           </div>
         </div>
         </div>
