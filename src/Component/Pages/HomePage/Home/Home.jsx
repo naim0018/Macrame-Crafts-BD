@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Featured from '../Featured/Featured';
 import HotDeals from '../HotDeals/HotDeals';
 import Banner from '../Banner/Banner/Banner';

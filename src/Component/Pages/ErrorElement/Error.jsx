@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Lottie from 'react-lottie';
 import error from './error.json'
 import { Link } from 'react-router-dom';
