@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
+import  { useRef } from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -13,6 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const Slider = () => {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
+  // eslint-disable-next-line no-unused-vars
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
