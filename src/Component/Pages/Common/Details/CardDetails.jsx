@@ -39,23 +39,24 @@ const CardDetails = () => {
   }
   // // add to cart function
   const handelAddToCart = () =>{
-    const addToCartArry = [];
-    const addToCart = JSON.parse(localStorage.getItem('addCart'));
-    if (!addToCart){
-      addToCartArry.push(productId);
-      localStorage.setItem('addCart', JSON.stringify(addToCartArry));
-      swal("Done", "Products Added Sucessfuyully!", "Success");
+    // const addToCartArry = [];
+    // const addToCart = JSON.parse(localStorage.getItem('addCart'));
+    // if (!addToCart){
+    //   addToCartArry.push(productId);
+    //   localStorage.setItem('addCart', JSON.stringify(addToCartArry));
+    //   swal("Done", "Products Added Sucessfuyully!", "Success");
 
-    }else{
-      const isHave = addToCart.find((productId) => productId.id === id);
-      if(!isHave){
-        addToCartArry.push(...addToCart,productId);
-        localStorage.setItem("addCard", JSON.stringify(addToCartArry));
-        swal("Done", "Products Added Sucessfuyully!", "Success");
-      }else{
-        swal("Sorry", "Products All Ready Added ", "Success");
-      }
-    }
+    // }else{
+    //   const isHave = addToCart.find((productId) => productId.id === id);
+    //   if(!isHave){
+    //     addToCartArry.push(...addToCart,productId);
+    //     localStorage.setItem("addCard", JSON.stringify(addToCartArry));
+    //     swal("Done", "Products Added Sucessfuyully!", "Success");
+    //   }else{
+    //     swal("Sorry", "Products All Ready Added ", "Success");
+    //   }
+    // }
+    console.log(productIdn)
   
   }
 
