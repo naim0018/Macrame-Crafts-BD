@@ -12,7 +12,7 @@ const HotDeals = () => {
         <div className='container mx-auto my-10'>
             <div className="text-center w-1/2 mx-auto">
                 <h1 className='font-normal text-5xl mt-10'>Hot Deals</h1>
-                <p className='text-sm text-center text-gray-400 mx-auto mt-2 mb-10'>"Explore fantastic discounts on featured items in the Hot Deals—grab your favorite products at amazing prices today!"</p>
+                <p className='text-sm text-center text-gray-400 mx-auto mt-2 mb-10'>&quotExplore fantastic discounts on featured items in the Hot Deals—grab your favorite products at amazing prices today!&quot</p>
             </div>
 
             {/* Cards */}

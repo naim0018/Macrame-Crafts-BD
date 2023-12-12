@@ -1,17 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-
 import Error from "../Component/Pages/ErrorElement/Error";
-import Products from "../Component/Pages/Products/Products";
 import Home from "../Component/Pages/HomePage/Home/Home";
-import Tutorials from "../Component/Pages/Tutorials/Tutorials";
+import Products from "../Component/Pages/Products/Products";
 import Tools from "../Component/Pages/Tools/Tools";
+import Tutorials from "../Component/Pages/Tutorials/Tutorials";
 import CardDetails from "../Component/Pages/Common/Details/CardDetails";
-import DashBoard from "../Component/Dashboard/DashBoard";
-import Order from "../Component/Pages/AdminDashboard/Order/Order";
-import Addproduct from "../Component/Pages/AdminDashboard/AddProduct/Addproduct";
-import PaymentHistroy from "../Component/Pages/AdminDashboard/PaymentHistroy/PaymentHistroy";
 import Carts from "../Component/Pages/Carts/Carts";
+import DashBoard from "../Admin/Dashboard/DashBoard";
+import Order from "../Admin/AdminDashboard/Order/Order";
+import Addproduct from "../Admin/AdminDashboard/AddProduct/Addproduct";
+import PaymentHistroy from "../Admin/AdminDashboard/PaymentHistroy/PaymentHistroy";
+
 
 
 const router=createBrowserRouter([

@@ -1,5 +1,5 @@
-import { Description } from "@mui/icons-material";
-import React from "react";
+
+
 
 const TutorialsCard = ({ data }) => {
   const { id, img, title,paragraph } = data;

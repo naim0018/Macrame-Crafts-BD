@@ -1,5 +1,5 @@
 import React from 'react';
-import SideNab from '../Pages/SideNab/SideNab';
+import SideNab from '../SideNab/SideNab';
 
 const DashBoard = () => {
     return (

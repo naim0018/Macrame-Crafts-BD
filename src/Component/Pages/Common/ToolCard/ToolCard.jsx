@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const ToolCard = ({ tool }) => {
   const { img, title , number, description  } = tool;
