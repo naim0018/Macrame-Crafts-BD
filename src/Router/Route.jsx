@@ -11,6 +11,8 @@ import DashBoard from "../Admin/Dashboard/DashBoard";
 import Order from "../Admin/AdminDashboard/Order/Order";
 import Addproduct from "../Admin/AdminDashboard/AddProduct/Addproduct";
 import PaymentHistroy from "../Admin/AdminDashboard/PaymentHistroy/PaymentHistroy";
+import Login from "../Component/Pages/Login/Login";
+import Sigup from "../Component/Pages/Sigup/Sigup";
 
 
 
@@ -44,6 +46,15 @@ const router=createBrowserRouter([
                 path:'cart',
                 element:<Carts/>
             },
+            {
+                path:'/login',
+                element:<Login/>,
+            },
+            {
+                path:'/sigup',
+                element:<Sigup/>,
+            },
+           
         
             {
                 path:'dashboard',
@@ -61,7 +72,7 @@ const router=createBrowserRouter([
                         path:'/dashboard/paymenthistroy',
                         element:<PaymentHistroy/>,
                     },
-                   
+                 
                 ]
             }
         ]
