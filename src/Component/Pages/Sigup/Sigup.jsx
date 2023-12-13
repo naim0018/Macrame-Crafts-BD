@@ -1,10 +1,14 @@
 
+import { Helmet } from "react-helmet-async";
 import { FaFacebook } from "react-icons/fa";
-import { CgMail } from "react-icons/cg";
+import { ImGooglePlus2 } from "react-icons/im";
 
 const Sigup = () => {
   return (
     <div>
+      <Helmet>
+        <title>Macrame Crafts BD | Sigup</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center ">
@@ -13,6 +17,17 @@ const Sigup = () => {
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
+            <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="name"
+                  placeholder="Your Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -42,11 +57,11 @@ const Sigup = () => {
               </div>
               <div>
                 <div className="mb-5">
-                <p className="text-center font-bold">Or</p>
+                  <p className="text-center">OR</p>
                 </div>
                 <div className="flex justify-center gap-5">
-                    <FaFacebook className="text-2xl"/>
-                    <CgMail className="text-3xl"/>
+                    <FaFacebook className="text-4xl text-primary hover:text-yellow-600"/>
+                    <ImGooglePlus2 className="text-4xl text-red-600 hover:text-yellow-600"/>
                 </div>
               </div>
               <div className="form-control mt-6">
