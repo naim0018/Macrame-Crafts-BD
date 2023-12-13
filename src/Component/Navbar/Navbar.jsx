@@ -59,6 +59,14 @@ const Navbar = () => {
           </button>
           
         </NavLink>
+        <NavLink
+          to="/login"
+          className={({ isActive }) =>
+            isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
+          }
+        >
+            Login
+        </NavLink>
       </div>
     </>
   );
