@@ -2,6 +2,13 @@ import { Helmet } from "react-helmet-async";
 import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
 const Login = () => {
+const handleLogin = event =>{
+  event.preventDefault();
+  const form = event.target;
+  const email =form.email.value;
+  const password = form.password.value;
+  console.log(email,password)
+}
   return (
     <div>
       <Helmet>
@@ -16,7 +23,7 @@ const Login = () => {
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
        
               <div className="form-control">
                 <label className="label">
@@ -24,6 +31,7 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                   required
@@ -35,6 +43,7 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required

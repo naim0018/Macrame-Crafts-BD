@@ -55,6 +55,10 @@ const Sigup = () => {
                   </a>
                 </label>
               </div>
+          
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Sigup</button>
+              </div>
               <div>
                 <div className="mb-5">
                   <p className="text-center">OR</p>
@@ -63,9 +67,6 @@ const Sigup = () => {
                     <FaFacebook className="text-4xl text-primary hover:text-yellow-600"/>
                     <ImGooglePlus2 className="text-4xl text-red-600 hover:text-yellow-600"/>
                 </div>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Sigup</button>
               </div>
             </form>
           </div>
