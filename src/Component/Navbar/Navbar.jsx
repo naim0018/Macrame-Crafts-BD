@@ -1,7 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext);
+  const handlelogout = () => {
+    logOut() 
+    .then (() => {})
+    .catch (error => console.log(error))
+  
+  }
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-center font-semibold gap-5 ">
@@ -59,7 +69,11 @@ const Navbar = () => {
           </button>
           
         </NavLink>
-        <NavLink
+    {
+      user ? <>
+      <button onClick={handlelogout} className="btn btn-ghost">Primary</button> 
+      </> :<>
+          <NavLink
           to="/login"
           className={({ isActive }) =>
             isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
@@ -67,6 +81,8 @@ const Navbar = () => {
         >
             Login
         </NavLink>
+      </>
+    }
       </div>
     </>
   );
