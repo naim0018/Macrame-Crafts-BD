@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-facebook-share-link": "^1.0.4",
     "react-helmet-async": "^2.0.3",
+    "react-hook-form": "^7.49.2",
     "react-icons": "^4.12.0",
     "react-lottie": "^1.2.3",
     "react-medium-image-zoom": "^5.1.8",

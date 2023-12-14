@@ -1,9 +1,17 @@
 
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
 
+
 const Sigup = () => {
+  const { register, handleSubmit,formState: { errors } } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+
+  }
+
   return (
     <div>
       <Helmet>
@@ -16,17 +24,19 @@ const Sigup = () => {
             <p className="py-6">Crate Your Account</p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Name</span>
                 </label>
                 <input
                   type="name"
+                  {...register("name", { required: true })}
                   placeholder="Your Name"
                   className="input input-bordered"
-                  required
+                 
                 />
+                {errors.name && <span>This field is required</span>}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -34,10 +44,11 @@ const Sigup = () => {
                 </label>
                 <input
                   type="email"
+                  {...register("email", { required: true })}
                   placeholder="email"
                   className="input input-bordered"
-                  required
                 />
+                {errors.email && <span>This field is required</span>}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -45,10 +56,12 @@ const Sigup = () => {
                 </label>
                 <input
                   type="password"
+                  {...register("password",{ required: true, minLength:6 ,maxLength: 20})}
                   placeholder="password"
                   className="input input-bordered"
-                  required
                 />
+                {errors.password?.type === 'required' && <p className="text-red-500">minimum 6 charetor</p>}
+                {errors.password && <span>minimum 6 charetor</span>}
                 <label className="label">
                   <a href="/login" className="label-text-alt link link-hover">
                     Login Here?
