@@ -1,14 +1,23 @@
 
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const Sigup = () => {
   const { register, handleSubmit,formState: { errors } } = useForm();
+  const {createUser} = useContext (AuthContext);
+
   const onSubmit = data => {
     console.log(data);
+    createUser(data.email,data.password)
+    .then (result => {
+      const loggedUser =result.user;
+      console.log(loggedUser);
+    })
 
   }
 

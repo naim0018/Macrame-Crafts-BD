@@ -1,13 +1,40 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
+import { AuthContext } from "../../../Provider/AuthProvider";
 const Login = () => {
+  const {sigIn} = useContext(AuthContext);
 const handleLogin = event =>{
   event.preventDefault();
   const form = event.target;
   const email =form.email.value;
   const password = form.password.value;
   console.log(email,password)
+  sigIn(email,password)
+  .then (result => {
+    const user = result.user;
+    console.log(user)
+    swal.fire({
+      title: "Login Done",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+      }
+    });
+  })
+  
+ 
 }
   return (
     <div>
