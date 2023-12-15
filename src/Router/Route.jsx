@@ -13,6 +13,7 @@ import Addproduct from "../Admin/AdminDashboard/AddProduct/Addproduct";
 import PaymentHistroy from "../Admin/AdminDashboard/PaymentHistroy/PaymentHistroy";
 import Login from "../Component/Pages/Login/Login";
 import Sigup from "../Component/Pages/Sigup/Sigup";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -66,7 +67,7 @@ const router=createBrowserRouter([
                     },
                     {
                         path:'/dashboard/addproduct',
-                        element:<Addproduct/>,
+                        element:<PrivateRoute><Addproduct/></PrivateRoute>,
                     },
                     {
                         path:'/dashboard/paymenthistroy',

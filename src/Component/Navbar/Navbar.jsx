@@ -9,7 +9,14 @@ const Navbar = () => {
   const handlelogout = () => {
     logOut() 
     .then (() => {})
-    .catch (error => console.log(error))
+    .catch (error => console.log(error));
+    const { isLoggedIn } = this.state;
+
+  if(isLoggedIn) {
+    // Do logout
+  } else {
+    // Do login
+  }
   
   }
   return (
