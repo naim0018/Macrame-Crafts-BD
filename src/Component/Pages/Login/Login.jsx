@@ -3,6 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from 'sweetalert2'
+
+
+
 const Login = () => {
   const {sigIn} = useContext(AuthContext);
 const handleLogin = event =>{
@@ -14,9 +18,9 @@ const handleLogin = event =>{
   sigIn(email,password)
   .then (result => {
     const user = result.user;
-    console.log(user)
-    swal.fire({
-      title: "Login Done",
+    console.log(user);
+    Swal.fire({
+      title: "Login in successfully",
       showClass: {
         popup: `
           animate__animated
@@ -32,6 +36,7 @@ const handleLogin = event =>{
         `
       }
     });
+    
   })
   
  

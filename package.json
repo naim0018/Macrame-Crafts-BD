@@ -32,6 +32,7 @@
     "react-sweetalert2": "^0.6.0",
     "sort-by": "^0.0.2",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.10.1",
     "swiper": "^11.0.5"
   },
   "devDependencies": {
