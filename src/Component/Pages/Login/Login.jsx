@@ -4,11 +4,16 @@ import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
 const Login = () => {
   const {sigIn} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const loaction = useLocation();
+
+  const from = location.state?.pathname || "/";
 const handleLogin = event =>{
   event.preventDefault();
   const form = event.target;
@@ -36,6 +41,7 @@ const handleLogin = event =>{
         `
       }
     });
+    navigate(from, {replace:true});
     
   })
   
