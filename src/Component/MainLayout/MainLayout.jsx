@@ -39,6 +39,7 @@ const MainLayout = ({ children }) => {
                   src="https://i.ibb.co/YpDz3JN/macrime-logo.png"
                   alt=""
                 />
+                
                 </Link>
               </div>
             </div>

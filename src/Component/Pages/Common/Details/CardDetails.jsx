@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
+// import swal from "sweetalert";
+
 
 const CardDetails = () => {
   
@@ -35,9 +37,32 @@ const CardDetails = () => {
   const handleIncrement = () =>{
      setAmount(count=> count+1);
   }
+  // // add to cart function
+  const handelAddToCart = () =>{
+    // const addToCartArry = [];
+    // const addToCart = JSON.parse(localStorage.getItem('addCart'));
+    // if (!addToCart){
+    //   addToCartArry.push(productId);
+    //   localStorage.setItem('addCart', JSON.stringify(addToCartArry));
+    //   swal("Done", "Products Added Sucessfuyully!", "Success");
+
+    // }else{
+    //   const isHave = addToCart.find((productId) => productId.id === id);
+    //   if(!isHave){
+    //     addToCartArry.push(...addToCart,productId);
+    //     localStorage.setItem("addCard", JSON.stringify(addToCartArry));
+    //     swal("Done", "Products Added Sucessfuyully!", "Success");
+    //   }else{
+    //     swal("Sorry", "Products All Ready Added ", "Success");
+    //   }
+    // }
+    console.log(productIdn)
+  
+  }
+
 
   return (
-    <div className="">
+    <div>
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -99,7 +124,7 @@ const CardDetails = () => {
                 </div>
                 </div>
                 
-                <button className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500">Add to Cart</button>
+                <button onClick={handelAddToCart} className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500">Add to Cart</button>
               </div>
             </div>
           </div>
