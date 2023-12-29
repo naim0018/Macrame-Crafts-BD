@@ -66,11 +66,11 @@ const Navbar = () => {
           to="/cart"
           className={({ isActive }) =>
             isActive
-              ? "p-4 text-red-500 border rounded-full border-red-500 "
-              : " hover:border-red-500 hover:text-red-500"
+              ? "p-4 text-red-500"
+              :" hover:text-red-500"
           }
         >
-          <button class="btn">
+          <button class="btn hover:bg-yellow-200 bg-transparent border-none">
            <FaShoppingBag />
             <div class="badge badge-secondary flex flex-row">+0</div>
           </button>
