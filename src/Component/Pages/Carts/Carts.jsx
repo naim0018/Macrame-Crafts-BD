@@ -1,6 +1,19 @@
 
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Carts = () => {
+  const [cart,setCart]= useState([])
+
+  useEffect(()=>{
+    const addToCart =JSON.parse(localStorage.getItem("addCart"));
+    if (addToCart){
+      setCart(addToCart);
+    }else{
+      console.log('data no')
+    }
+    
+  },[])
     return (
         <div className='min-h-screen'>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
