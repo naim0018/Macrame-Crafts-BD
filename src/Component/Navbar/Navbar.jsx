@@ -66,7 +66,7 @@ const Navbar = () => {
           to="/cart"
           className={({ isActive }) =>
             isActive
-              ? "p-4 text-red-500"
+              ? " text-red-500"
               :" hover:text-red-500"
           }
         >
