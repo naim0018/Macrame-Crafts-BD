@@ -5,6 +5,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import swal from "sweetalert";
+import axios from "axios";
 
 
 const CardDetails = () => {
@@ -38,25 +39,18 @@ const CardDetails = () => {
      setAmount(count=> count+1);
   }
   // // add to cart function
-  const handelAddToCart = () =>{
-    // const addToCartArry = [];
-    // const addToCart = JSON.parse(localStorage.getItem('addCart'));
-    // if (!addToCart){
-    //   addToCartArry.push(productId);
-    //   localStorage.setItem('addCart', JSON.stringify(addToCartArry));
-    //   swal("Done", "Products Added Sucessfuyully!", "Success");
-
-    // }else{
-    //   const isHave = addToCart.find((productId) => productId.id === id);
-    //   if(!isHave){
-    //     addToCartArry.push(...addToCart,productId);
-    //     localStorage.setItem("addCard", JSON.stringify(addToCartArry));
-    //     swal("Done", "Products Added Sucessfuyully!", "Success");
-    //   }else{
-    //     swal("Sorry", "Products All Ready Added ", "Success");
-    //   }
-    // }
-    console.log(productIdn)
+  const handelAddToCart = product =>{
+    const cartItem ={
+      prodcutAddId:id,
+      image,
+      title,
+      price,
+    }
+    axios.post ('http://localhost:5000/product/carts',cartItem)
+    .then(res => {
+      console.log(res.data)
+    })
+    console.log(product)
   
   }
 
@@ -124,7 +118,7 @@ const CardDetails = () => {
                 </div>
                 </div>
                 
-                <button onClick={handelAddToCart} className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500">Add to Cart</button>
+                <button onClick={() => handelAddToCart(productId)} className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500">Add to Cart</button>
               </div>
             </div>
           </div>
