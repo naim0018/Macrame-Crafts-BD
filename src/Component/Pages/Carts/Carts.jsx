@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 
 import { useEffect } from 'react';
 import { useState } from 'react';
-=======
-import { useEffect, useState } from "react";
-
->>>>>>> 2d4245125cbc707f5a4b7e342b6ed921715a3c2c
 
 const Carts = () => {
   const [cart,setCart]= useState([])

@@ -12,7 +12,7 @@ const Tutorials = () => {
       <Helmet>
         <title>Macrame Crafts BD | Tutorials</title>
       </Helmet>
-      <div>
+      <div className="container mx-auto space-y-10">
         {
           tutorials.map(data => <TutorialsCard key={data.id} data={data}></TutorialsCard>)
         }

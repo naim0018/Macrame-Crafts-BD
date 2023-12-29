@@ -29,10 +29,10 @@
     "react-medium-image-zoom": "^5.1.8",
     "react-messenger-customer-chat": "^0.8.0",
     "react-router-dom": "^6.20.0",
-    "react-sweetalert2": "^0.6.0",
+    "react-sweetalert2": "^0.5.2",
     "sort-by": "^0.0.2",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.10.1",
+    "sweetalert2": "^11.6.13",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

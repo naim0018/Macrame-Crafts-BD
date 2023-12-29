@@ -67,7 +67,7 @@ const router=createBrowserRouter([
                     },
                     {
                         path:'/dashboard/addproduct',
-                        element:<PrivateRoute><Addproduct/></PrivateRoute>,
+                        element:<Addproduct/>,
                     },
                     {
                         path:'/dashboard/paymenthistroy',
