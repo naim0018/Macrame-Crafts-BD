@@ -11,7 +11,7 @@ const CardDetails = () => {
   const product = useData();
   const { id } = useParams();
   // console.log(product)
-  const productId = product?.find((item) => item.id == id);
+  const productId = product?.find((item) => item._id == id);
   const {
     title,
     image,
@@ -37,7 +37,7 @@ const CardDetails = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
