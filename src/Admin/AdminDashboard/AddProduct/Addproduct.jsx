@@ -14,7 +14,7 @@ const Addproduct = () => {
 
   return (
     <>
-      <div className="hero min-h-screen border-4 pb-24 mb-20">
+      <div className="hero min-h-screen -mt-20 pb-24 mb-20">
         <div className=" hero-content flex-col lg:flex-row-revers w-full">
           <div className="card shrink-0  w-4/5 shadow-2xl bg-base-10">
             <form className="card-body w-full">
