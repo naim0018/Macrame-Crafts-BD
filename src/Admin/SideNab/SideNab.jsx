@@ -19,6 +19,12 @@ const SideNab = () => {
              Add Product
             </NavLink>
           </li>
+          <li className="my-5 ">
+            <NavLink className="text-2xl" to='/dashboard/updateproduct'> 
+            <IoBagAddSharp />
+             Update Product
+            </NavLink>
+          </li>
           <li >
             <NavLink className="text-2xl" to='/dashboard/order'> 
             <BiSolidCartAdd />
