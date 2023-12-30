@@ -70,6 +70,10 @@ const router=createBrowserRouter([
                         element:<Addproduct/>,
                     },
                     {
+                        path:'/dashboard/updateproduct',
+                        element:<Addproduct/>,
+                    },
+                    {
                         path:'/dashboard/paymenthistroy',
                         element:<PaymentHistroy/>,
                     },
