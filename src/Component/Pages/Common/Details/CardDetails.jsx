@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import useData from "../../../../hooks/useData";
 import { useParams } from "react-router-dom";
@@ -13,7 +11,7 @@ const CardDetails = () => {
   const product = useData();
   const { id } = useParams();
   // console.log(product)
-  const productId = product?.find((item) => item.id == id);
+  const productId = product?.find((item) => item._id == id);
   const {
     title,
     image,
@@ -34,12 +32,12 @@ const CardDetails = () => {
     setAmount((count) => count + 1);
   };
 
-//   const handelAddToCart = () => {
-//     console.log(productIdn);
-//   };
+  const handelAddToCart = () => {
+    console.log(productIdn);
+  };
 
   return (
-    <div>
+    <div className="min-h-screen">
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -87,7 +85,7 @@ const CardDetails = () => {
                       <TbCurrencyTaka />
                       {discountPrice}
                     </p>
-                    <del className=" text-red-400 flex justify-center items-center"><TbCurrencyTaka />{price}</del>
+                    <del className=" text-red-400">৳{price}</del>
                   </div>
                 </div>
               ) : (
@@ -118,7 +116,7 @@ const CardDetails = () => {
                 </div>
 
                 <button
-                //   onClick={handelAddToCart}
+                  onClick={handelAddToCart}
                   className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500"
                 >
                   Add to Cart

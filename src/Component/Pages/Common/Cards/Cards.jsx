@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Cards = ({ data }) => {
   const [discount, setDiscount] = useState(false);
   const {
-    id,
+    _id,
     title,
     image,
     height,
@@ -17,19 +17,16 @@ const Cards = ({ data }) => {
     meterial,
   } = data;
 
-  // if (discountPrice){
-  //   setDiscount(true)
-  // } 
+
 
   return (
-    <div className="border border-black rounded-lg shadow">
-      {/* <div className="w-full  border outline outline-1 border-b-4 border-r-4 border-transparent hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden"
-      > */}
+    <div className="border w-full border-black rounded-lg shadow">
+    
       <div className="w-full border-b-4 border-r-4 border-transparent  group  hover:border-b-4 hover:border-r-4 hover:border-b-black hover:border-r-black rounded-lg overflow-hidden transition-all  ease-in-out flex flex-col h-full ">
         {/* image  */}
-        <div className="grid relative p-4 pr-3">
+        <div className="grid relative p-4 pr-3 bg-slate-200 ml-3 mr-2 mt-2 rounded">
           <img
-            className="place-self-center bg-gray-200 group-hover:scale-110 transition-all ease-in-out rounded-lg"
+            className="place-self-center w-80  group-hover:scale-110 transition-all ease-in-out rounded-lg h-60"
             src={image}
             alt=""
           />
@@ -57,7 +54,7 @@ const Cards = ({ data }) => {
 
           }
           <div className="border rounded-lg border-black">
-            <Link to={`/cardDetails/${id}`}>
+            <Link to={`/cardDetails/${_id}`}>
               <button className="btn bg-white border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-black hover:border-b-black">Details</button>
             </Link>
           </div>
