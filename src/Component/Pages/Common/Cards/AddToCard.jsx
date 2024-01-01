@@ -1,79 +1,27 @@
-import { useState } from "react";
-import useData from "../../../../hooks/useData";
-import { useParams } from "react-router-dom";
-import { TbCurrencyTaka } from "react-icons/tb";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
-import swal from "sweetalert";
-// import swal from "sweetalert";
+import { Zoom } from "@mui/material";
 
-const CardDetails = () => {
-  const [amount, setAmount] = useState(1);
-  const product = useData();
-  const { id } = useParams();
-  // console.log(product)
-  const productId = product?.find((item) => item._id == id);
-  const {
-    title,
-    image,
-    height,
-    width,
-    description,
-    price,
-    discountPrice,
-    material,
-  } = productId || {};
+const AddToCard = ({productId}) => {
 
-  const handleDecrement = () => {
-    if (amount > 1) {
-      setAmount((count) => count - 1);
-    }
-  };
-  const handleIncrement = () => {
-    setAmount((count) => count + 1);
-  };
+    const {
+        id,
+        title,
+        image,
+        height,
+        width,
+        description,
+        price,
+        discountPrice,
+        material,
+      } = productId || {};
 
-  // const handelAddToCart = () => {
-  //   console.log(productId);
-  // };
+      const handleRemove = () => {
+        localStorage.clear();
+        setFavorites([]);
+        setNofound("No Data Found");
+      };
 
-  const handelAddToCart = () => {
-    const addedFavoritesArray = [];
-
-    const favoriteItems = JSON.parse(localStorage.getItem("carts"));
-
-    //jokhon kisu nai tokhon e if vitor dhukba
-    if (!favoriteItems) {
-      addedFavoritesArray.push(productId);
-      localStorage.setItem("carts", JSON.stringify(addedFavoritesArray));
-      swal("Good job!", "Products added successfully!", "success");
-    } 
-    
-    else {
-
-
-      const isExits = favoriteItems.find((productId) => productId.id === id);
-
-      
-      if (!isExits) {
-
-        addedFavoritesArray.push(...favoriteItems, productId);
-        localStorage.setItem("cart", JSON.stringify(addedFavoritesArray));
-        swal("Good job!", "Products added successfully!", "success");
-       
-      } else {
-        swal("Error!", "No duplicate !", "error");
-      }
-
-    
-
-
-    }
-
-  };
-
-  return (
-    <div className="min-h-screen">
+    return (
+     <div className="min-h-screen">
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -118,7 +66,7 @@ const CardDetails = () => {
                 <div className="">
                   <div className="flex gap-4 items-center w-fit">
                     <p className="text-4xl font-medium flex items-center text-emerald-400">
-                      <TbCurrencyTaka />
+                      {/* <TbCurrencyTaka /> */}
                       {discountPrice}
                     </p>
                     <del className=" text-red-400">৳{price}</del>
@@ -126,24 +74,24 @@ const CardDetails = () => {
                 </div>
               ) : (
                 <p className="text-4xl font-medium flex items-center text-emerald-400">
-                  <TbCurrencyTaka />
-                  {price}
+                  {/* <TbCurrencyTaka /> */}
+            
                 </p>
               )}
               <div className="flex items-center gap-4 mt-8">
                 <div className="">
                   <div className="border border-black w-fit  flex items-center gap-4">
                     <button
-                      onClick={handleDecrement}
+                      // onClick={handleDecrement}
                       className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none "
                     >
                       -
                     </button>
                     <p className="text-xl font-bold w-5 text-center">
-                      {amount}
+                      {height}
                     </p>
                     <button
-                      onClick={handleIncrement}
+                      // onClick={handleIncrement}
                       className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none "
                     >
                       +
@@ -152,10 +100,11 @@ const CardDetails = () => {
                 </div>
 
                 <button
-                  onClick={handelAddToCart}
+                  // onClick={handelAddToCart}
+                  onClick={handleRemove}
                   className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500"
                 >
-                  Add to Cart
+                  Deleted
                 </button>
               </div>
             </div>
@@ -163,7 +112,7 @@ const CardDetails = () => {
         </div>
       )}
     </div>
-  );
+    );
 };
 
-export default CardDetails;
+export default AddToCard;
