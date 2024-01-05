@@ -66,9 +66,9 @@ const Navbar = () => {
             isActive ? " text-red-500" : " hover:text-red-500"
           }
         >
-          <button class="btn hover:bg-yellow-200 bg-transparent border-none">
+          <button className="btn hover:bg-yellow-200 bg-transparent border-none">
             <FaShoppingBag />
-            <div class="badge badge-secondary flex flex-row">+0</div>
+            <div className="badge badge-secondary flex flex-row">+0</div>
           </button>
         </NavLink>
         {user ? (

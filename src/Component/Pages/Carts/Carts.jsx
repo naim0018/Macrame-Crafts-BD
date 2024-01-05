@@ -1,5 +1,6 @@
 import  { useEffect, useState } from "react";
-import AddToCard from "../Common/Cards/AddToCard";
+import AddToCart from "../Common/Cards/AddToCart";
+
 
 
 const Carts = () => {
@@ -61,11 +62,11 @@ const Carts = () => {
           <div className="grid grid-cols-2 gap-5">
             {
                 isShow ? favorites.map((productId) => (
-                    <AddToCard key={productId.id} productId={productId}></AddToCard>
+                    <AddToCart key={productId.id} productId={productId}></AddToCart>
                   )) 
                   
                   : favorites.slice(0,2).map((productId) => (
-                    <AddToCard key={productId.id} productId={productId}></AddToCard>
+                    <AddToCart key={productId.id} productId={productId}></AddToCart>
                   ))
             }
           </div>

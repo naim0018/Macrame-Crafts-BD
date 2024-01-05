@@ -8,7 +8,7 @@ const SideNab = () => {
   return (
     <div className="container mx-auto flex min-h-screen">
       {/* Dashborad Side Bar */}
-      <div className="w-64 min-h-full bg-yellow-400">
+      <div className=" min-h-full bg-yellow-400">
         <ul className="menu p-4">
           <li className="text-2xl">
             Admin Panel

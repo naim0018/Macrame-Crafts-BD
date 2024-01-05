@@ -7,7 +7,7 @@ const useData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/product");
+        const response = await fetch("https://macrame-crafts-server.vercel.app/product");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
