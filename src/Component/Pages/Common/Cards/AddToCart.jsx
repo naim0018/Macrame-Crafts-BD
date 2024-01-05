@@ -1,6 +1,6 @@
 import { Zoom } from "@mui/material";
 
-const AddToCard = ({productId}) => {
+const AddToCart = ({productId}) => {
 
     const {
         id,
@@ -115,4 +115,4 @@ const AddToCard = ({productId}) => {
     );
 };
 
-export default AddToCard;
+export default AddToCart;
