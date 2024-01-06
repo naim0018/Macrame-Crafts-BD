@@ -9,10 +9,9 @@ import swal from "sweetalert";
 
 const CardDetails = () => {
   const [amount, setAmount] = useState(1);
-  const product = useData();
+  const {products,loading} = useData();
   const { id } = useParams();
-  // console.log(product)
-  const productId = product?.find((item) => item._id == id);
+  const productId = products?.find((item) => item._id == id);
   const {
     title,
     image,

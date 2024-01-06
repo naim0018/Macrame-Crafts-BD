@@ -15,7 +15,7 @@ const Loading = () => {
     };
 
     return (
-        <div>
+        <div className='min-h-screen  flex items-center justify-center -mt-20'>
             <Lottie options={defaultOptions}
                 height={400}
                 width={400}

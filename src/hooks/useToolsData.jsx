@@ -1,20 +1,23 @@
 
+import axios from "axios";
 import  { useState, useEffect } from "react";
 const useToolsData = () => {
     const [tools, setTools] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-      fetch("Tools.json") 
-        .then((res) => res.json())
-        .then((data) => {
-          setTools(data);
-          console.log(data); 
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+      const fetchData = async () => {
+        try {
+          const {data} = await axios.get('https://macrame-crafts-server.vercel.app/tools');
+          setTools(data)
+          setLoading(false)
+        } catch (error) {
+          console.error("Error fetching tools data:", error);
+        }
+      };
+  
+      fetchData(); // Call the async function
     }, []);
-    return tools;
+    return {tools,loading};
 };
 
 export default useToolsData;
