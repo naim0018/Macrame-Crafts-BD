@@ -4,10 +4,9 @@ import Cards from '../../Common/Cards/Cards';
 
 
 const HotDeals = () => {
-    const data = useData();
-    console.log(data)
+    const {products:data} = useData();
     const products =data?.filter(item=>item.discountPrice !== undefined)
-    console.log(products)
+    
     return (
         <div className='container mx-auto my-10'>
             <div className="text-center w-1/2 mx-auto">
@@ -18,7 +17,7 @@ const HotDeals = () => {
             {/* Cards */}
             <div className=" mx-2  grid 2xl:grid-cols-4 xl:grid-cols-3 lg:gap-10 lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center">
                 {
-                    products?.slice(0,4).map(data => <Cards key={data.id} data={data}/>)                   
+                    products?.slice(0,4).map(data => <Cards key={data._id} data={data}/>)                   
                 }
             </div>
         </div>
