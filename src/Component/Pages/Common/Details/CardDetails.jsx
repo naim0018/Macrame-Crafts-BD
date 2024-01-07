@@ -5,6 +5,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import swal from "sweetalert";
+import axios from "axios";
 // import swal from "sweetalert";
 
 const CardDetails = () => {
@@ -37,37 +38,44 @@ const CardDetails = () => {
   // };
 
   const handelAddToCart = () => {
-    const addedFavoritesArray = [];
-
-    const favoriteItems = JSON.parse(localStorage.getItem("carts"));
-
-    //jokhon kisu nai tokhon e if vitor dhukba
-    if (!favoriteItems) {
-      addedFavoritesArray.push(productId);
-      localStorage.setItem("carts", JSON.stringify(addedFavoritesArray));
-      swal("Good job!", "Products added successfully!", "success");
-    } 
-    
-    else {
-
-
-      const isExits = favoriteItems.find((productId) => productId.id === id);
-
+    try {
+      const cartData = axios.post('/carts',productId)
+      console.log(cartData)
       
-      if (!isExits) {
-
-        addedFavoritesArray.push(...favoriteItems, productId);
-        localStorage.setItem("cart", JSON.stringify(addedFavoritesArray));
-        swal("Good job!", "Products added successfully!", "success");
-       
-      } else {
-        swal("Error!", "No duplicate !", "error");
-      }
-
-    
-
-
+    } catch (error) {
+      console.log(error.message)
     }
+
+
+
+
+
+
+
+
+
+
+    // const addedFavoritesArray = [];
+
+    // const favoriteItems = JSON.parse(localStorage.getItem("carts"));
+
+    // //jokhon kisu nai tokhon e if vitor dhukba
+    // if (!favoriteItems) {
+    //   addedFavoritesArray.push(productId);
+    //   localStorage.setItem("carts", JSON.stringify(addedFavoritesArray));
+    //   swal("Good job!", "Products added successfully!", "success");
+    // } 
+    // else {
+    //   const isExits = favoriteItems.find((productId) => productId.id === id);
+    //   if (!isExits) {
+    //     addedFavoritesArray.push(...favoriteItems, productId);
+    //     localStorage.setItem("cart", JSON.stringify(addedFavoritesArray));
+    //     swal("Good job!", "Products added successfully!", "success");
+       
+    //   } else {
+    //     swal("Error!", "No duplicate !", "error");
+    //   }
+    // }
 
   };
 
@@ -85,7 +93,7 @@ const CardDetails = () => {
               />
             </Zoom>
           </div>
-          <div className="my-20  sticky top-10 h-fit">
+          <div className="my-20  sticky top-24 h-fit">
             <div className="space-y-5">
               <h2 className="text-4xl font-medium">{title}</h2>
               <p className="w-2/3 text-lg font-normal text-gray-500">
