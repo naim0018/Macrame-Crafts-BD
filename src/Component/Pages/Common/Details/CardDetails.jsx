@@ -32,7 +32,6 @@ const CardDetails = () => {
   const handleIncrement = () => {
     setAmount((count) => count + 1);
   };
-   console.log(amount)
     if(amount>0)
     {
       var totalPrice  = amount * ( discountPrice || price );
@@ -55,15 +54,6 @@ const CardDetails = () => {
     } catch (error) {
       console.log(error.message)
     }
-
-
-
-
-
-
-
-
-
 
     // const addedFavoritesArray = [];
 
