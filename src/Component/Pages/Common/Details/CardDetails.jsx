@@ -32,14 +32,24 @@ const CardDetails = () => {
   const handleIncrement = () => {
     setAmount((count) => count + 1);
   };
+   console.log(amount)
+    if(amount>0)
+    {
+      var totalPrice  = amount * ( discountPrice || price );
+    }
+
+
+  const cartItem = {
+    title,image,height,width,description,price,discountPrice,amount, totalPrice
+  }
 
   // const handelAddToCart = () => {
   //   console.log(productId);
   // };
 
-  const handelAddToCart = () => {
+  const handelAddToCart =async () => {
     try {
-      const cartData = axios.post('/carts',productId)
+      const cartData = await axios.post('http://localhost:4000/carts',cartItem)
       console.log(cartData)
       
     } catch (error) {
