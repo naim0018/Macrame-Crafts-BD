@@ -1,22 +1,38 @@
 import { NavLink } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+import useCartData from "../../hooks/useCartData";
+
 
 const Navbar = () => {
+  const [len,setLen]=useState(0);
   const { user, logOut } = useContext(AuthContext);
+  // const [data,setData]=useState()
+  const data = useCartData()
+  console.log(data)
   const handlelogout = () => {
     logOut()
-      .then(() => {})
-      .catch((error) => console.log(error));
+    .then(() => {})
+    .catch((error) => console.log(error));
     const { isLoggedIn } = this.state;
-
+    
     if (isLoggedIn) {
       // Do logout
     } else {
       // Do login
     }
   };
+  useEffect(()=>{
+    axios.get('https://macrame-crafts-server.vercel.app/carts')
+    .then(data=> setLen(data.data.length))
+  },[data])
+
+
+
+
+console.log(len)
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-center font-semibold gap-5 ">
@@ -68,7 +84,7 @@ const Navbar = () => {
         >
           <button className="btn hover:bg-yellow-200 bg-transparent border-none">
             <FaShoppingBag />
-            <div className="badge badge-secondary flex flex-row">+0</div>
+            <div className="badge badge-secondary flex flex-row">{len}</div>
           </button>
         </NavLink>
         {user ? (
