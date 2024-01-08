@@ -13,7 +13,7 @@ const [data,setData] = useState()
 useEffect(()=> {
 const fetchData = async () =>{
   try {
-    const {data} =await axios.get('http://localhost:4000/carts')
+    const {data} =await axios.get('https://macrame-crafts-server.vercel.app/carts')
  
     setData(data)
   } catch (error) {
