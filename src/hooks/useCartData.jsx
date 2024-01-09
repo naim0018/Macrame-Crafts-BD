@@ -15,19 +15,15 @@ const useCartData = () => {
           }
         }
         fetchData();
-        },[])
-
-
-    // const {} = useQueries({
-    //     queryKey:['carts'],
-    //     queryFn:()=>{
-    //         axios.get('https://macrame-crafts-server.vercel.app/carts')
-    //         .then()
-    //     }
-    // })
-
-
-  return carts
-}
-
-export default useCartData
+        },[])  
+        return carts   
+      }
+      export default useCartData
+      
+      // const {} = useQueries({
+      //     queryKey:['carts'],
+      //     queryFn:()=>{
+      //         axios.get('https://macrame-crafts-server.vercel.app/carts')
+      //         .then()
+      //     }
+      // })

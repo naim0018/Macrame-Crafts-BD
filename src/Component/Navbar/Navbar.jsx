@@ -11,7 +11,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   // const [data,setData]=useState()
   const data = useCartData()
-  console.log(data)
+  
   const handlelogout = () => {
     logOut()
     .then(() => {})
@@ -24,10 +24,12 @@ const Navbar = () => {
       // Do login
     }
   };
+
+
   useEffect(()=>{
     axios.get('https://macrame-crafts-server.vercel.app/carts')
     .then(data=> setLen(data.data.length))
-  },[data])
+  },[])
 
 
 

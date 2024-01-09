@@ -4,25 +4,45 @@ import axios from "axios";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 import ShowCartData from "./ShowCartData";
-import uesCartData from "../../../hooks/useCartData";
+import useCartData from "../../../hooks/useCartData";
 
 
 const Carts = () => {
-// const [data,setData] = useState()
+  const cartData = useCartData()
+  
+  const [data,setData] = useState()
+  useEffect(()=>{
+    setData(cartData)
+  },[cartData])
+  console.log(cartData)
+     
 // const [total,setTotal] = useState(0)
 
-const data = uesCartData()
 
 
+
+
+const handleDelete= async(id)=>{
+  console.log(id)
+  await axios.delete(`http://localhost:400/carts/${id}`)
+  .then(res => {
+    if(res.status === 200){
+      const remaining = data.filter(item=> item._id !== id )
+      console.log(remaining)
+      setData(remaining)
+    }
+  })
+}
+console.log(data)
 const subTotal = data?.reduce((price,item)=> price + item.totalPrice, 0 )
+
 console.log(subTotal)
 
-
 const totalPrice= data?.reduce((price,item)=> price + (item.price*item.amount),0);
-console.log(totalPrice)
+
 
 const discount = totalPrice - subTotal;
-console.log(discount)
+
 
 
   return (
@@ -41,7 +61,7 @@ console.log(discount)
         
       <div className="">
         {
-          data?.map(item => <ShowCartData key={item._id} item={item}/>)
+          data?.map(item => <ShowCartData key={item._id} item={item} handleDelete={handleDelete}/>)
         }
       </div>
         
