@@ -2,8 +2,10 @@ import React from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import { FaEquals } from "react-icons/fa6";
 import axios from "axios";
+import useCartData from "../../../hooks/useCartData";
+import Carts from "./Carts";
 
-const ShowCartData = ({ item }) => {
+const ShowCartData = ({ item , handleDelete }) => {
   
   const {
     _id,
@@ -18,9 +20,12 @@ const ShowCartData = ({ item }) => {
     totalPrice,
   } = item;
   
-  const handleDelete =async () =>{
-    const dele = await axios.delete(`https://macrame-crafts-server.vercel.app/carts/${_id}`);
-    console.log(dele)
+  const handleCartDelete =async () =>{
+    try {
+      await handleDelete(_id)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 
@@ -84,7 +89,7 @@ const ShowCartData = ({ item }) => {
               <p>{totalPrice}</p>
             </div>
 
-            <button onClick={handleDelete} className="text-gray-600 transition hover:text-red-600">
+            <button onClick={handleCartDelete} className="text-gray-600 transition hover:text-red-600">
               <span className="sr-only">Remove item</span>
 
               <svg
