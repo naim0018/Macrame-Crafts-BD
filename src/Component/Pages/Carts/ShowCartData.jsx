@@ -5,8 +5,8 @@ import axios from "axios";
 import useCartData from "../../../hooks/useCartData";
 import Carts from "./Carts";
 
-const ShowCartData = ({ item , handleDelete }) => {
-  
+const ShowCartData = ({ item, handleDelete }) => {
+
   const {
     _id,
     title,
@@ -19,8 +19,8 @@ const ShowCartData = ({ item , handleDelete }) => {
     amount,
     totalPrice,
   } = item;
-  
-  const handleCartDelete =async () =>{
+
+  const handleCartDelete = async () => {
     try {
       await handleDelete(_id)
     } catch (error) {
@@ -55,16 +55,16 @@ const ShowCartData = ({ item , handleDelete }) => {
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
-          <dl className="flex items-center justify-center  space-x-2   text-gray-600">
+            <dl className="flex items-center justify-center  space-x-2   text-gray-600">
               <div>
-               {
-                discountPrice ? <dd className="inline text-red-400 text-sm"><del>{price}</del></dd> :<dd className="inline ">{price}</dd>
-               }
-                
+                {
+                  discountPrice ? <dd className="inline text-red-400 text-sm"><del>{price}</del></dd> : <dd className="inline ">{price}</dd>
+                }
+
               </div>
 
               <div>
-                
+
                 <dd className="inline">{discountPrice}</dd>
               </div>
             </dl>
