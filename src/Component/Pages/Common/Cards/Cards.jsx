@@ -12,7 +12,7 @@ const Cards = ({ data }) => {
     description,
     price,
     discountPrice,
-    meterial,
+    material,
   } = data;
 
   return (
