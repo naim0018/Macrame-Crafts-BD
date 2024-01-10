@@ -1,27 +1,27 @@
 import { Zoom } from "@mui/material";
 
-const AddToCart = ({productId}) => {
+const AddToCart = ({ productId }) => {
 
-    const {
-        id,
-        title,
-        image,
-        height,
-        width,
-        description,
-        price,
-        discountPrice,
-        material,
-      } = productId || {};
+  const {
+    id,
+    title,
+    image,
+    height,
+    width,
+    description,
+    price,
+    discountPrice,
+    material,
+  } = productId || {};
 
-      const handleRemove = () => {
-        localStorage.clear();
-        setFavorites([]);
-        setNofound("No Data Found");
-      };
+  const handleRemove = () => {
+    localStorage.clear();
+    setFavorites([]);
+    setNofound("No Data Found");
+  };
 
-    return (
-     <div className="min-h-screen">
+  return (
+    <div className="min-h-screen">
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -44,7 +44,7 @@ const AddToCart = ({productId}) => {
               <p>
                 <span className="text-lg font-semibold">Height : </span>
                 <span className="text-xl font-normal text-gray-500">
-                  
+
                   {height}
                 </span>
                 <span className="h-20 border-l-[1px] border-black mx-5"></span>
@@ -75,7 +75,7 @@ const AddToCart = ({productId}) => {
               ) : (
                 <p className="text-4xl font-medium flex items-center text-emerald-400">
                   {/* <TbCurrencyTaka /> */}
-            
+
                 </p>
               )}
               <div className="flex items-center gap-4 mt-8">
@@ -112,7 +112,7 @@ const AddToCart = ({productId}) => {
         </div>
       )}
     </div>
-    );
+  );
 };
 
 export default AddToCart;

@@ -7,17 +7,18 @@ import useCartData from "../../hooks/useCartData";
 
 
 const Navbar = () => {
-  const [len,setLen]=useState(0);
+  // const [len, setLen] = useState(0);
   const { user, logOut } = useContext(AuthContext);
   // const [data,setData]=useState()
-  const data = useCartData()
-  
+  const [carts] = useCartData()
+  const len = carts?.length;
+console.log(carts);
   const handlelogout = () => {
     logOut()
-    .then(() => {})
-    .catch((error) => console.log(error));
+      .then(() => { })
+      .catch((error) => console.log(error));
     const { isLoggedIn } = this.state;
-    
+
     if (isLoggedIn) {
       // Do logout
     } else {
@@ -26,15 +27,15 @@ const Navbar = () => {
   };
 
 
-  useEffect(()=>{
-    axios.get('https://macrame-crafts-server.vercel.app/carts')
-    .then(data=> setLen(data.data.length))
-  },[])
+  // useEffect(() => {
+  //   axios.get('https://macrame-crafts-server.vercel.app/carts')
+  //     .then(data => setLen(data.data.length))
+  // }, [])
 
 
 
 
-console.log(len)
+  console.log(len)
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-center font-semibold gap-5 ">

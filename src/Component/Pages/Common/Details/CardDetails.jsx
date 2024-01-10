@@ -6,11 +6,14 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import swal from "sweetalert";
 import axios from "axios";
+import useCartData from "../../../../hooks/useCartData";
 // import swal from "sweetalert";
 
 const CardDetails = () => {
   const [amount, setAmount] = useState(1);
-  const {products,loading} = useData();
+  const { products, loading } = useData();
+
+  const [,refetch] = useCartData();
   const { id } = useParams();
   const productId = products?.find((item) => item._id == id);
   const {
@@ -32,50 +35,30 @@ const CardDetails = () => {
   const handleIncrement = () => {
     setAmount((count) => count + 1);
   };
-    if(amount>0)
-    {
-      var totalPrice  = amount * ( discountPrice || price );
-    }
+  if (amount > 0) {
+    var totalPrice = amount * (discountPrice || price);
+  }
 
 
   const cartItem = {
-    title,image,height,width,description,price,discountPrice,amount, totalPrice
+    title, image, height, width, description, price, discountPrice, amount, totalPrice
   }
 
   // const handelAddToCart = () => {
   //   console.log(productId);
   // };
 
-  const handelAddToCart =async () => {
+  const handelAddToCart = async () => {
     try {
-      const cartData = await axios.post('https://macrame-crafts-server.vercel.app/carts',cartItem)
+      const cartData = await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
       console.log(cartData)
-      
+      refetch(); 
+
     } catch (error) {
       console.log(error.message)
     }
 
-    // const addedFavoritesArray = [];
 
-    // const favoriteItems = JSON.parse(localStorage.getItem("carts"));
-
-    // //jokhon kisu nai tokhon e if vitor dhukba
-    // if (!favoriteItems) {
-    //   addedFavoritesArray.push(productId);
-    //   localStorage.setItem("carts", JSON.stringify(addedFavoritesArray));
-    //   swal("Good job!", "Products added successfully!", "success");
-    // } 
-    // else {
-    //   const isExits = favoriteItems.find((productId) => productId.id === id);
-    //   if (!isExits) {
-    //     addedFavoritesArray.push(...favoriteItems, productId);
-    //     localStorage.setItem("cart", JSON.stringify(addedFavoritesArray));
-    //     swal("Good job!", "Products added successfully!", "success");
-       
-    //   } else {
-    //     swal("Error!", "No duplicate !", "error");
-    //   }
-    // }
 
   };
 
@@ -103,7 +86,7 @@ const CardDetails = () => {
               <p>
                 <span className="text-lg font-semibold">Height : </span>
                 <span className="text-xl font-normal text-gray-500">
-                  
+
                   {height}
                 </span>
                 <span className="h-20 border-l-[1px] border-black mx-5"></span>
