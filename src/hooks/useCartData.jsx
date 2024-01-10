@@ -19,24 +19,3 @@ const useCartData = () => {
       }
       export default useCartData
       
-      // const {} = useQueries({
-      //     queryKey:['carts'],
-      //     queryFn:()=>{
-      //         axios.get('https://macrame-crafts-server.vercel.app/carts')
-      //         .then()
-      //     }
-      // })
-
-      
-    // useEffect(()=> {
-    //     const fetchData = async () =>{
-    //       try {
-    //         const {data} =await axios.get('https://macrame-crafts-server.vercel.app/carts')
-         
-    //         setCarts(data)
-    //       } catch (error) {
-    //             console.log(error.message)
-    //       }
-    //     }
-    //     fetchData();
-    //     },[])  
