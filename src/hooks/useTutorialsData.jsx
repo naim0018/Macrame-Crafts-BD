@@ -2,25 +2,20 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useTutorialsData = () => {
-    const [tutorials,setTutorials] = useState([]);
-    const [loading,setLoading]=useState(true)
-    useEffect(() => {
-        const fetchData =async () =>{
-            try {
-                const {data} = await axios.get('https://macrame-crafts-server.vercel.app/tutorials')
-                setLoading(false)
-                setTutorials(data);
-            } catch (error) {
-                console.log("Error Fetching Data :", error)
-            }
+
+    const tutorials = useQuery({
+        queryKey:["tutorials"],
+        queryFn:async()=>{
+            const {data} =await axios.get("https://macrame-crafts-server.vercel.app/tutorials")
+            return data
         }
-        fetchData();
-      }, []);
+    })
 
-
-      return {tutorials ,loading };
+    return tutorials
 };
 
 export default useTutorialsData;
+
