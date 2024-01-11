@@ -7,13 +7,12 @@ import "react-medium-image-zoom/dist/styles.css";
 import swal from "sweetalert";
 import axios from "axios";
 import useCartData from "../../../../hooks/useCartData";
+import Loadingui from "../../Loading/Loadingui/Loadingui";
 // import swal from "sweetalert";
 
 const CardDetails = () => {
   const [amount, setAmount] = useState(1);
-  const { products, loading } = useData();
-
-  const [,refetch] = useCartData();
+  const { data: products, isLoading, refetch } = useData();
   const { id } = useParams();
   const productId = products?.find((item) => item._id == id);
   const {
@@ -50,9 +49,12 @@ const CardDetails = () => {
 
   const handelAddToCart = async () => {
     try {
-      const cartData = await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
-      console.log(cartData)
-      refetch(); 
+      await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
+        .then(res => {
+          if (res.status === 200) {
+            refetch();
+          }
+        })
 
     } catch (error) {
       console.log(error.message)
@@ -64,6 +66,9 @@ const CardDetails = () => {
 
   return (
     <div className="min-h-screen">
+      {
+        isLoading && <Loadingui />
+      }
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
