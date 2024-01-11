@@ -5,22 +5,13 @@ import { TbCurrencyTaka } from "react-icons/tb";
 
 import ShowCartData from "./ShowCartData";
 import useCartData from "../../../hooks/useCartData";
+import Loadingui from "../Loading/Loadingui/Loadingui";
 
 
 
 const Carts = () => {
-  const [carts, refetch] = useCartData()
-
-  const [data, setData] = useState(carts)
-  // useEffect(()=>{
-  //   setData(cartData)
-  // },[cartData])
-  // console.log(cartData)
-
-  // const [total,setTotal] = useState(0)
-
-
-
+  const carts = useCartData()
+  const { data, refetch, isLoading } = carts
 
 
   const handleDelete = async (id) => {
@@ -32,10 +23,8 @@ const Carts = () => {
         }
       })
   }
-  console.log(carts)
-  const subTotal = data?.reduce((price, item) => price + item.totalPrice, 0)
 
-  console.log(subTotal)
+  const subTotal = data?.reduce((price, item) => price + item.totalPrice, 0)
 
   const totalPrice = data?.reduce((price, item) => price + (item.price * item.amount), 0);
 
@@ -46,7 +35,9 @@ const Carts = () => {
 
   return (
     <div className="min-h-screen">
-
+      {
+        isLoading && <Loadingui />
+      }
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <div className="mx-auto max-w-3xl">
@@ -60,7 +51,7 @@ const Carts = () => {
 
               <div className="">
                 {
-                  carts?.map(item => <ShowCartData key={item._id} item={item} handleDelete={handleDelete} />)
+                  data?.map(item => <ShowCartData key={item._id} item={item} handleDelete={handleDelete} />)
                 }
               </div>
 

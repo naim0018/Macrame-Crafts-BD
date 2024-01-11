@@ -7,8 +7,9 @@ import Loadingui from "../Loading/Loadingui/Loadingui";
 
 
 const Products = () => {
-  const {products,loading} = useData();
-  
+  const result = useData();
+  const {data: products,isLoading}=result
+
   return (
     <div className="min-h-screen">
       <Helmet>
@@ -17,7 +18,7 @@ const Products = () => {
       <h1 className="text-5xl font-light text-center my-10">Our Products</h1>
 
         {
-        loading ? <div className=" "><Loadingui/></div> :
+        isLoading ? <Loadingui/> :
       <div className="w-5/6 mx-auto grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-10 ">
         {
           products.map((data) => (

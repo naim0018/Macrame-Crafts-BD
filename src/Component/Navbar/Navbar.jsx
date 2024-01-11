@@ -9,8 +9,9 @@ import useCartData from "../../hooks/useCartData";
 const Navbar = () => {
 
   const { user, logOut } = useContext(AuthContext);
- 
-  const [carts] = useCartData()
+
+  const { data: carts } = useCartData()
+
   const len = carts?.length;
 
   const handlelogout = () => {

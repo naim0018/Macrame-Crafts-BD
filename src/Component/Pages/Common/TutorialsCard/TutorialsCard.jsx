@@ -3,7 +3,7 @@
 
 const TutorialsCard = ({ data }) => {
   const { id, img, title,paragraph } = data;
-  console.log(data)
+  
   return (
     <div className=" grid sm:grid-cols-3 shadow-md p-8 gap-5 ">
       <div className=" ">
