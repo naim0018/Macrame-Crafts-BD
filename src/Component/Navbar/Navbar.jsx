@@ -7,12 +7,13 @@ import useCartData from "../../hooks/useCartData";
 
 
 const Navbar = () => {
-
+  const [len, setLen] = useState()
   const { user, logOut } = useContext(AuthContext);
 
   const { data: carts } = useCartData()
-
-  const len = carts?.length;
+  useEffect(() => {
+    setLen(carts?.length);
+  }, [carts])
 
   const handlelogout = () => {
     logOut()
