@@ -11,14 +11,15 @@ import Loadingui from "../Loading/Loadingui/Loadingui";
 
 const Carts = () => {
   const carts = useCartData()
-  const { data, refetch, isLoading } = carts
+  const { data, refetch, isLoading, isFetching } = carts
 
 
   const handleDelete = async (id) => {
     console.log(id)
-    await axios.delete(`http://localhost:400/carts/${id}`)
+    await axios.delete(`https://macrame-crafts-server.vercel.app/carts/${id}`)
       .then(res => {
         if (res.status === 200) {
+          console.log(isFetching);
           refetch()
         }
       })

@@ -12,9 +12,9 @@ import Loadingui from "../../Loading/Loadingui/Loadingui";
 
 const CardDetails = () => {
   const [amount, setAmount] = useState(1);
-  const { data: products, isLoading, refetch } = useData();
+  const { data, isLoading, refetch, isFetching } = useData();
   const { id } = useParams();
-  const productId = products?.find((item) => item._id == id);
+  const productId = data?.find((item) => item._id == id);
   const {
     title,
     image,
@@ -48,17 +48,14 @@ const CardDetails = () => {
   // };
 
   const handelAddToCart = async () => {
-    try {
-      await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
-        .then(res => {
-          if (res.status === 200) {
-            refetch();
-          }
-        })
 
-    } catch (error) {
-      console.log(error.message)
-    }
+    await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
+      .then(res => {
+        if (res.status === 200) {
+          console.log(isFetching);
+          refetch();
+        }
+      })
 
 
 

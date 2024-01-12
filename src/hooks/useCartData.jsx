@@ -7,7 +7,7 @@ const useCartData = () => {
     queryKey: ['carts'],
     queryFn: async () => {
       try {
-        const { data } = await axios.get('http://localhost:400/carts')
+        const { data } = await axios.get('https://macrame-crafts-server.vercel.app/carts')
         return data;
       } catch (error) {
         console.log(error.message);

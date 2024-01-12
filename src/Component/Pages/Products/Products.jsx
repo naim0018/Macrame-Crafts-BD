@@ -8,25 +8,15 @@ import { Dropdown } from "primereact/dropdown";
 
 
 const Products = () => {
-  const [products, setProducts] = useState()
-  const [category, setCategory] = useState()
-  const { data, isLoading, isFetching } = useData()
+  // const [products, setProducts] = useState()
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortedData, setSortedData] = useState([]);
+  const [category, setCategory] = useState("")
+  const { data, refetch, isLoading, isFetching } = useData(sortOrder)
   useEffect(() => {
-    if (data) {
-      setProducts(data);
-    }
-
-    if (category !== "") {
-      console.log(category);
-      const categoryData = data?.filter(item => item.category == category)
-      setProducts(categoryData)
-    }
-
-  }, [data, category]);
-
-  console.log(products?.length);
-  console.log(category);
-
+    refetch();
+  }, [sortOrder])
+  console.log(sortOrder);
 
   return (
     <div className="min-h-screen">
@@ -35,6 +25,11 @@ const Products = () => {
       </Helmet>
       <h1 className="text-5xl font-light text-center my-10">Our Products</h1>
 
+      <select className="select select-bordered w-full max-w-xs" value={sortOrder} onChange={e => setSortOrder(e.target.value)}>
+
+        <option value="asc">Price Low to High</option>
+        <option value="dsc">Price High to Low</option>
+      </select>
 
       <select className="select select-bordered w-full max-w-xs" value={category} onChange={e => setCategory(e.target.value)}>
         <option value="" >Select Category</option>
@@ -48,7 +43,7 @@ const Products = () => {
 
           <div className="w-5/6 mx-auto grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-10 ">
             {
-              products?.map((data) => (
+              data?.map((data) => (
                 <Cards key={data._id} data={data} />
               ))
             }
