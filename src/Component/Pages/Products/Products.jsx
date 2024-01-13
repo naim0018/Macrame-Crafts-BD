@@ -12,10 +12,10 @@ const Products = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortedData, setSortedData] = useState([]);
   const [category, setCategory] = useState("")
-  const { data, refetch, isLoading, isFetching } = useData(sortOrder)
+  const { data, refetch, isLoading, isFetching } = useData(sortOrder,category)
   useEffect(() => {
     refetch();
-  }, [sortOrder])
+  }, [sortOrder,category])
   console.log(sortOrder);
 
   return (
