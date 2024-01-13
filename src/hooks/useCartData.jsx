@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+
 import { useQueries, useQuery } from 'react-query'
 
 const useCartData = () => {
@@ -10,7 +10,7 @@ const useCartData = () => {
         const { data } = await axios.get('https://macrame-crafts-server.vercel.app/carts')
         return data;
       } catch (error) {
-        console.log(error.message);
+        
       }
     }
   })

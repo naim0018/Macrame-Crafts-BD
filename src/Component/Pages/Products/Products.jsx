@@ -7,15 +7,15 @@ import Loadingui from "../Loading/Loadingui/Loadingui";
 import { Dropdown } from "primereact/dropdown";
 
 const Products = () => {
-  // const [products, setProducts] = useState()
+
   const [sortOrder, setSortOrder] = useState("asc");
-  const [sortedData, setSortedData] = useState([]);
+  
   const [category, setCategory] = useState("");
-  const { data, refetch, isLoading, isFetching } = useData(sortOrder, category);
+  const { data, refetch, isLoading} = useData(sortOrder, category);
   useEffect(() => {
     refetch();
   }, [sortOrder, category]);
-  console.log(sortOrder);
+ 
 
   return (
     <div className="min-h-screen">

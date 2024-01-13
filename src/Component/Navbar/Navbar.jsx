@@ -18,7 +18,7 @@ const Navbar = () => {
   const handlelogout = () => {
     logOut()
       .then(() => { })
-      .catch((error) => console.log(error));
+      .catch(error) ;
     const { isLoggedIn } = this.state;
 
   };

@@ -20,8 +20,7 @@ const Addproduct = () => {
     const price = form.price.value;
     const height = form.height.value;
     const width = form.width.value;
-    console.log(productName,Description,price,height,width);
-
+  
   };
 
 

@@ -1,16 +1,23 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loadingui from '../Component/Pages/Loading/Loadingui/Loadingui';
 
 const PrivateRoute = ({children}) => {
     const {user,loading} =useContext(AuthContext);
     const loaction = useLocation();
 
     if (loading){
-        return <progress className="progress w-56"></progress>
+        return (
+            <div className="">
+                <Loadingui/>
+            </div>
+        )
     }
 
-    if (user) {
+    if (!user) {
+        <Navigate to='/login'></Navigate>
+    }else{
         return children;
     }
     return <Navigate to="/login" state={{from: loaction}} replace></Navigate>
