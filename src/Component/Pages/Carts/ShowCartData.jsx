@@ -24,7 +24,7 @@ const ShowCartData = ({ item, handleDelete }) => {
     try {
       await handleDelete(_id)
     } catch (error) {
-      console.log(error)
+      
     }
   }
 

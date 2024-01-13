@@ -43,16 +43,13 @@ const CardDetails = () => {
     title, image, height, width, description, price, discountPrice, amount, totalPrice
   }
 
-  // const handelAddToCart = () => {
-  //   console.log(productId);
-  // };
+  
 
   const handelAddToCart = async () => {
 
     await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
       .then(res => {
         if (res.status === 200) {
-          console.log(isFetching);
           refetch();
         }
       })

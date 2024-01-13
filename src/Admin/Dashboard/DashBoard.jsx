@@ -3,7 +3,7 @@ import SideNab from '../SideNab/SideNab';
 
 const DashBoard = () => {
     return (
-        <div>
+        <div >
             <SideNab/>
         </div>
     );

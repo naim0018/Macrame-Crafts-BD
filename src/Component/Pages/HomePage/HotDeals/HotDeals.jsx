@@ -6,7 +6,7 @@ import Loadingui from '../../Loading/Loadingui/Loadingui';
 
 const HotDeals = () => {
     const result = useData();
-    const { data, isLoading } = result;
+    const { data , isLoading } = result;
 
 
     const products = data?.filter(item => item.discountPrice !== undefined)

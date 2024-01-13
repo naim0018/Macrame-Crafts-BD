@@ -19,11 +19,9 @@ const handleLogin = event =>{
   const form = event.target;
   const email =form.email.value;
   const password = form.password.value;
-  console.log(email,password)
   sigIn(email,password)
   .then (result => {
     const user = result.user;
-    console.log(user);
     Swal.fire({
       title: "Login in successfully",
       showClass: {
