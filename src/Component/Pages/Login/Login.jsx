@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-  const {sigIn} = useContext(AuthContext);
+  const {signIn} = useContext(AuthContext);
   const navigate = useNavigate();
   const loaction = useLocation();
 
@@ -20,7 +20,7 @@ const handleLogin = event =>{
   const email =form.email.value;
   const password = form.password.value;
   console.log(email,password)
-  sigIn(email,password)
+  signIn(email,password)
   .then (result => {
     const user = result.user;
     console.log(user);
@@ -90,7 +90,7 @@ const handleLogin = event =>{
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
-                  <a href="/sigup" className="label-text-alt link link-hover">
+                  <a href="/signup" className="label-text-alt link link-hover">
                     Crate an a Account?
                   </a>
                 </label>
