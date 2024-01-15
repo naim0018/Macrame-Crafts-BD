@@ -9,11 +9,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-  const {sigIn} = useContext(AuthContext);
+  const {sigIn,googlePopUp,user} = useContext(AuthContext);
   const navigate = useNavigate();
-  const loaction = useLocation();
+  const location = useLocation();
 
-  const from = location.state?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 const handleLogin = event =>{
   event.preventDefault();
   const form = event.target;
@@ -45,6 +45,11 @@ const handleLogin = event =>{
   
  
 }
+  const handleGooglePopUp =()=>{
+    googlePopUp()
+    console.log(user)
+  }
+
   return (
     <div>
       <Helmet>
@@ -100,7 +105,7 @@ const handleLogin = event =>{
                 </div>
                 <div className="flex justify-center gap-5">
                     <FaFacebook className="text-4xl text-primary hover:text-yellow-600"/>
-                    <ImGooglePlus2 className="text-4xl text-red-600 hover:text-yellow-600"/>
+                    <ImGooglePlus2 onClick={handleGooglePopUp} className="text-4xl text-red-600 hover:text-yellow-600"/>
                 </div>
               </div>
               <div className="form-control mt-6">

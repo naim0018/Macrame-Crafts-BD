@@ -2,27 +2,28 @@ import { NavLink } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import axios from "axios";
 import useCartData from "../../hooks/useCartData";
 
-
 const Navbar = () => {
-  const [len, setLen] = useState()
+  const [len, setLen] = useState();
   const { user, logOut } = useContext(AuthContext);
 
-  const { data: carts } = useCartData()
+  const { data: carts } = useCartData();
   useEffect(() => {
-    setLen(carts?.length);
-  }, [carts])
+    if(user){
+      setLen(carts?.length);
+    }else{
+      setLen("+0")
+    }
+  }, [carts]);
 
-  const handlelogout = () => {
+  const handelLogout = () => {
     logOut()
-      .then(() => { })
-      .catch(error) ;
+      .then(() => {})
+      .catch(error);
     const { isLoggedIn } = this.state;
-
   };
-
+  
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-center font-semibold gap-5 ">
@@ -58,14 +59,16 @@ const Navbar = () => {
         >
           Tutorials
         </NavLink>
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
-          }
-        >
-          DashBoard
-        </NavLink>
+        {user && (
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
+            }
+          >
+            DashBoard
+          </NavLink>
+        )}
         <NavLink
           to="/cart"
           className={({ isActive }) =>
@@ -77,29 +80,30 @@ const Navbar = () => {
             <div className="badge badge-secondary flex flex-row">{len}</div>
           </button>
         </NavLink>
-        {user ? (
-          <>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
-              }
-            >
-              Logout
-            </NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "p-4 text-red-500" : "p-4 hover:text-red-500"
-              }
-            >
-              Login
-            </NavLink>
-          </>
-        )}
+        {  <div className="dropdown dropdown-end space-y-2">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt="{user}" src="{user}" />
+        </div>
+      </div>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-100 rounded-box w-52 border border-black">
+        <li>
+          <a className="">
+            Profile
+            <span className="badge">{len}</span>
+          </a>
+        </li>
+        <li className="">
+        {
+          user ? 
+          <NavLink onClick={handelLogout} >LogOut</NavLink>
+          :
+        <NavLink to='/logIn'>LogIn</NavLink>
+        }
+        </li>
+      </ul>
+    </div>
+        }
       </div>
     </>
   );

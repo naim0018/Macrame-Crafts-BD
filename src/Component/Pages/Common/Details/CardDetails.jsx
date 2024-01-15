@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useData from "../../../../hooks/useData";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
@@ -8,9 +8,14 @@ import swal from "sweetalert";
 import axios from "axios";
 import useCartData from "../../../../hooks/useCartData";
 import Loadingui from "../../Loading/Loadingui/Loadingui";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 // import swal from "sweetalert";
 
 const CardDetails = () => {
+  const {user} = useContext(AuthContext)
+  console.log(user)
+  const navigate = useNavigate();
+  const location = useLocation()
   const [amount, setAmount] = useState(1);
   const { data, isLoading, refetch, isFetching } = useData();
   const { id } = useParams();
@@ -24,6 +29,7 @@ const CardDetails = () => {
     price,
     discountPrice,
     material,
+   
   } = productId || {};
 
   const handleDecrement = () => {
@@ -40,19 +46,22 @@ const CardDetails = () => {
 
 
   const cartItem = {
-    title, image, height, width, description, price, discountPrice, amount, totalPrice
+    title, image, height, width, description, price, discountPrice, amount, totalPrice,email:user.email
   }
 
   
-
+  // macrame-crafts-server.vercel.app
   const handelAddToCart = async () => {
-
-    await axios.post('https://macrame-crafts-server.vercel.app/carts', cartItem)
-      .then(res => {
-        if (res.status === 200) {
-          refetch();
-        }
-      })
+    if(user && user.email){
+      await axios.post('https://localhost:400/carts', cartItem)
+        .then(res => {
+          if (res.status === 200) {
+            refetch();
+          }
+        })
+    }else{
+      navigate('/logIn',{state:{from:location}})
+    }
 
 
 
