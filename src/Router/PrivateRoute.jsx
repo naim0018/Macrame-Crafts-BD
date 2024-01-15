@@ -5,7 +5,7 @@ import Loadingui from "../Component/Pages/Loading/Loadingui/Loadingui";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const loaction = useLocation();
+  const location = useLocation();
 
   if (loading) {
     return <Loadingui />;
