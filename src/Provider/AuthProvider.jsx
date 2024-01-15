@@ -1,0 +1,67 @@
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { createContext } from 'react';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from '../FIirebase.config';
+
+
+
+export const AuthContext = createContext(null);
+const auth = getAuth(app);
+
+const AuthProvider = ({children}) => {
+    
+    const [user,setUser] = useState(null)
+    const [loading, setLoading] = useState();
+const provider = new GoogleAuthProvider();
+    const createUser = (email,password) =>{
+        setLoading(true)
+        return createUserWithEmailAndPassword (auth,email,password);
+    }
+const googlePopUp=()=>{
+    setLoading(true)
+    signInWithPopup(auth,provider)
+    .then((result) =>{
+    const user = result.user
+    setUser(user)
+    console.log(user)
+})
+}
+    const sigIn = (email,password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword (auth,email,password);
+    }
+   
+    const logOut = () => {
+        setLoading(true)
+        return signOut(auth);
+    }
+    useEffect (() => {
+        const unSubceribe = onAuthStateChanged (auth,currentUser => {
+            setUser(currentUser);
+            console.log('current user', currentUser);
+            setLoading(false);
+        });
+        
+        return unSubceribe();
+        
+
+    },[])
+    const authInfo ={
+        user,
+        loading,
+        createUser,
+        sigIn,
+        googlePopUp,
+        logOut
+    }
+
+
+    return (
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export default AuthProvider;

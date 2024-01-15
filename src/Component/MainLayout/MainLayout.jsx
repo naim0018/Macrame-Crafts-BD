@@ -6,9 +6,9 @@ const MainLayout = ({ children }) => {
     <div>
       <div className="">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        <div className="">
-          {/* Navbar */}
-          <div className="w-full  navbar bg-yellow-300">
+        <div className="relative">
+          <div className="w-full  navbar bg-yellow-300 sticky top-0 z-20 ">
+          {/*Small Navbar */}
             <div className="w-full flex justify-between lg:hidden ">
               <div className="">
                 <label
@@ -31,24 +31,29 @@ const MainLayout = ({ children }) => {
                   </svg>
                 </label>
               </div>
-              <div className=" px-2 mx-2">
+              <div className=" px-2 mx-2 w-fit gap-2 flex items-center">
+              <p className="text-xl font-bold text-zinc-600"><span className="text-red-500">M</span>acrame<span className="text-red-500">C</span>rafts</p>
                 <Link to='/'>
                 <img
                   className="border rounded-full w-16"
                   src="https://i.ibb.co/YpDz3JN/macrime-logo.png"
                   alt=""
                 />
+                
                 </Link>
               </div>
             </div>
-
-            <div className="container mx-auto hidden lg:flex">
-              <div className="flex-1 px-2 mx-2 ">
+          {/* Large Navbar */}
+            <div className="container mx-auto hidden lg:flex justify-between">
+              <div className=" px-2 mx-2  w-fit ">
+                <Link to='/' className="flex items-center flex-row-reverse gap-2">
+                <p className="text-xl font-bold text-zinc-600"><span className="text-red-500">M</span>acrame<span className="text-red-500">C</span>rafts</p>
                 <img
-                  className="border rounded-full w-16"
+                  className="border rounded-full w-16 cursor-pointer"
                   src="https://i.ibb.co/YpDz3JN/macrime-logo.png"
                   alt=""
                 />
+                </Link>
               </div>
 
               {/* Navbar */}

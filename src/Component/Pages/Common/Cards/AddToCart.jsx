@@ -1,26 +1,9 @@
-import { useContext, useState } from "react";
-import useData from "../../../../hooks/useData";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { TbCurrencyTaka } from "react-icons/tb";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
-import swal from "sweetalert";
-import axios from "axios";
-import useCartData from "../../../../hooks/useCartData";
-import Loadingui from "../../Loading/Loadingui/Loadingui";
-import { AuthContext } from "../../../../Provider/AuthProvider";
-// import swal from "sweetalert";
+import { Zoom } from "@mui/material";
 
-const CardDetails = () => {
-  const {user} = useContext(AuthContext)
-  console.log(user)
-  const navigate = useNavigate();
-  const location = useLocation()
-  const [amount, setAmount] = useState(1);
-  const { data, isLoading, refetch, isFetching } = useData();
-  const { id } = useParams();
-  const productId = data?.find((item) => item._id == id);
+const AddToCart = ({ productId }) => {
+
   const {
+    id,
     title,
     image,
     height,
@@ -29,49 +12,16 @@ const CardDetails = () => {
     price,
     discountPrice,
     material,
-   
   } = productId || {};
 
-  const handleDecrement = () => {
-    if (amount > 1) {
-      setAmount((count) => count - 1);
-    }
-  };
-  const handleIncrement = () => {
-    setAmount((count) => count + 1);
-  };
-  if (amount > 0) {
-    var totalPrice = amount * (discountPrice || price);
-  }
-
-
-  const cartItem = {
-    title, image, height, width, description, price, discountPrice, amount, totalPrice,email:user.email
-  }
-
-  
-  // macrame-crafts-server.vercel.app
-  const handelAddToCart = async () => {
-    if(user && user.email){
-      await axios.post('https://localhost:400/carts', cartItem)
-        .then(res => {
-          if (res.status === 200) {
-            refetch();
-          }
-        })
-    }else{
-      navigate('/logIn',{state:{from:location}})
-    }
-
-
-
+  const handleRemove = () => {
+    localStorage.clear();
+    setFavorites([]);
+    setNofound("No Data Found");
   };
 
   return (
     <div className="min-h-screen">
-      {
-        isLoading && <Loadingui />
-      }
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -84,7 +34,7 @@ const CardDetails = () => {
               />
             </Zoom>
           </div>
-          <div className="my-20  sticky top-24 h-fit">
+          <div className="my-20  sticky top-10 h-fit">
             <div className="space-y-5">
               <h2 className="text-4xl font-medium">{title}</h2>
               <p className="w-2/3 text-lg font-normal text-gray-500">
@@ -116,7 +66,7 @@ const CardDetails = () => {
                 <div className="">
                   <div className="flex gap-4 items-center w-fit">
                     <p className="text-4xl font-medium flex items-center text-emerald-400">
-                      <TbCurrencyTaka />
+                      {/* <TbCurrencyTaka /> */}
                       {discountPrice}
                     </p>
                     <del className=" text-red-400">৳{price}</del>
@@ -124,24 +74,24 @@ const CardDetails = () => {
                 </div>
               ) : (
                 <p className="text-4xl font-medium flex items-center text-emerald-400">
-                  <TbCurrencyTaka />
-                  {price}
+                  {/* <TbCurrencyTaka /> */}
+
                 </p>
               )}
               <div className="flex items-center gap-4 mt-8">
                 <div className="">
                   <div className="border border-black w-fit  flex items-center gap-4">
                     <button
-                      onClick={handleDecrement}
+                      // onClick={handleDecrement}
                       className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none "
                     >
                       -
                     </button>
                     <p className="text-xl font-bold w-5 text-center">
-                      {amount}
+                      {height}
                     </p>
                     <button
-                      onClick={handleIncrement}
+                      // onClick={handleIncrement}
                       className="btn btn-ghost text-lg font-bold hover:bg-yellow-300 rounded-none "
                     >
                       +
@@ -150,10 +100,11 @@ const CardDetails = () => {
                 </div>
 
                 <button
-                  onClick={handelAddToCart}
+                  // onClick={handelAddToCart}
+                  onClick={handleRemove}
                   className="btn btn-lg bg-yellow-300 hover:bg-emerald-400 hover:text-gray-500"
                 >
-                  Add to Cart
+                  Deleted
                 </button>
               </div>
             </div>
@@ -164,4 +115,4 @@ const CardDetails = () => {
   );
 };
 
-export default CardDetails;
+export default AddToCart;

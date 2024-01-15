@@ -84,7 +84,7 @@ const Footer = () => {
         <nav>
           <header className="footer-title">Social</header>
           <div className="grid grid-flow-col gap-4">
-            <a>
+            <div>
             <ShareLink link="https://www.facebook.com/macramecarftsbd/">
                 {(link) => (
                   <a href={link} target="_blank">
@@ -92,17 +92,17 @@ const Footer = () => {
                   </a>
                 )}
               </ShareLink>
-            </a>
-            <a>
+            </div>
+            <div>
               <ShareLink link="https://www.facebook.com/macramecarftsbd/">
                 {(link) => (
-                  <a href={link} target="_blank">
+                  <p href={link} target="_blank">
                     <FaFacebook className="text-4xl"/>
-                  </a>
+                  </p>
                 )}
               </ShareLink>
               
-            </a>
+            </div>
           </div>
         </nav>
       </div>
