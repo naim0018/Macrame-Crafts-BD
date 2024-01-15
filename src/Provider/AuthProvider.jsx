@@ -19,7 +19,7 @@ const provider = new GoogleAuthProvider();
         return createUserWithEmailAndPassword (auth,email,password);
     }
 const googlePopUp=()=>{
-    setLoading(true)
+    
     signInWithPopup(auth,provider)
     .then((result) =>{
     const user = result.user
