@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-  const {sigIn,googlePopUp,user} = useContext(AuthContext);
+  const {sigIn,googleSignIn,user} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -46,7 +46,7 @@ const handleLogin = event =>{
  
 }
   const handleGooglePopUp =()=>{
-    googlePopUp()
+    googleSignIn()
     console.log(user)
   }
 
@@ -93,7 +93,7 @@ const handleLogin = event =>{
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
-                  <a href="/sigup" className="label-text-alt link link-hover">
+                  <a href="/signup" className="label-text-alt link link-hover">
                     Crate an a Account?
                   </a>
                 </label>

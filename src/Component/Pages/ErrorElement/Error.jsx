@@ -16,8 +16,8 @@ const Error = () => {
     return (
         <div className='flex flex-col items-center justify-center h-[calc(100vh/1.1)]'>
             <Lottie options={defaultOptions}
-                height={screen}
-                width={screen}
+                height={`screen`}
+                width={`screen`}
                 isClickToPauseDisabled={true}
             />
             <Link to='/'>

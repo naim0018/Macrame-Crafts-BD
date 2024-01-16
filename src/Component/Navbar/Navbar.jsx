@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCartData from "../../hooks/useCartData";
 
 const Navbar = () => {
-  const [len, setLen] = useState();
+  const [len, setLen] = useState(0);
   const { user, logOut } = useContext(AuthContext);
 
   const { data: carts } = useCartData();
@@ -23,7 +24,17 @@ const Navbar = () => {
       .catch(error);
     const { isLoggedIn } = this.state;
   };
-  
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+      toast.success("Logged out successfully");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-center font-semibold gap-5 ">

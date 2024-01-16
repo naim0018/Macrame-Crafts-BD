@@ -13,12 +13,13 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const CardDetails = () => {
   const {user} = useContext(AuthContext)
+
   console.log(user)
   const navigate = useNavigate();
   const location = useLocation()
   const [amount, setAmount] = useState(1);
-  const { data, isLoading, refetch, isFetching } = useData();
-  const { id } = useParams();
+  const { data, isLoading, refetch } = useData();
+  const { id } = useParams(); 
   const productId = data?.find((item) => item._id == id);
   const {
     title,
