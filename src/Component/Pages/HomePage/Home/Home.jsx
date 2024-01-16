@@ -17,7 +17,7 @@ const Home = () => {
         
       </div> */}
       <Helmet>
-        <title>Macrame Carft BD | Home</title>
+        <title>Macrame Craft BD | Home</title>
       </Helmet>
       <Banner />
       <Featured />
