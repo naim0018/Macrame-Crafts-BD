@@ -16,7 +16,7 @@ const Navbar = () => {
     }else{
       setLen("+0")
     }
-  }, [carts]);
+  }, [carts,user]);
 
   const handelLogout = () => {
     logOut()
