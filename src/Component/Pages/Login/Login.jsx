@@ -22,6 +22,7 @@ const handleLogin = event =>{
   signIn(email,password)
   .then (result => {
     const user = result.user;
+    console.log(user)
     if(user){
       Swal.fire({
         title: "Login in successfully",
