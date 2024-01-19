@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-  const {sigIn,googleSignIn,user} = useContext(AuthContext);
+  const {signIn,googleSignIn,user} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,26 +19,36 @@ const handleLogin = event =>{
   const form = event.target;
   const email =form.email.value;
   const password = form.password.value;
-  sigIn(email,password)
+  signIn(email,password)
   .then (result => {
     const user = result.user;
-    Swal.fire({
-      title: "Login in successfully",
-      showClass: {
-        popup: `
-          animate__animated
-          animate__fadeInUp
-          animate__faster
-        `
-      },
-      hideClass: {
-        popup: `
-          animate__animated
-          animate__fadeOutDown
-          animate__faster
-        `
-      }
-    });
+    if(user){
+      Swal.fire({
+        title: "Login in successfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster377
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
+      
+    }
     navigate(from, {replace:true});
     
   })
@@ -47,6 +57,28 @@ const handleLogin = event =>{
 }
   const handleGooglePopUp =()=>{
     googleSignIn()
+    .then (result => {
+      const user = result.user;
+      Swal.fire({
+        title: "Login in successfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+      navigate(from, {replace:true});
+      
+    })
     console.log(user)
   }
 

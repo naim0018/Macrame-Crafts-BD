@@ -9,10 +9,13 @@ import axios from "axios";
 import useCartData from "../../../../hooks/useCartData";
 import Loadingui from "../../Loading/Loadingui/Loadingui";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const CardDetails = () => {
   const {user} = useContext(AuthContext)
+  const axiosPublic = useAxiosPublic();
 
   console.log(user)
   const navigate = useNavigate();
@@ -47,17 +50,24 @@ const CardDetails = () => {
 
 
   const cartItem = {
-    title, image, height, width, description, price, discountPrice, amount, totalPrice,email:user.email
+    title, image, height, width, description, price, discountPrice, amount, totalPrice, email:user.email
   }
 
   
   // macrame-crafts-server.vercel.app
   const handelAddToCart = async () => {
     if(user && user.email){
-      await axios.post('https://localhost:400/carts', cartItem)
+      await axiosPublic.post('/carts', cartItem)
         .then(res => {
           if (res.status === 200) {
             refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
         })
     }else{
