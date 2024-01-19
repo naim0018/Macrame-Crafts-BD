@@ -9,7 +9,7 @@ import axios from "axios";
 import useCartData from "../../../../hooks/useCartData";
 import Loadingui from "../../Loading/Loadingui/Loadingui";
 import { AuthContext } from "../../../../Provider/AuthProvider";
-// import swal from "sweetalert";
+
 
 const CardDetails = () => {
   const {user} = useContext(AuthContext)
