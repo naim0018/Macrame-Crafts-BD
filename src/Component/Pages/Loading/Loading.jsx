@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Lottie from 'react-lottie';
 import loading from './loading.json'
 const Loading = () => {
@@ -15,7 +15,7 @@ const Loading = () => {
     };
 
     return (
-        <div>
+        <div className='min-h-screen  flex items-center justify-center -mt-20'>
             <Lottie options={defaultOptions}
                 height={400}
                 width={400}
