@@ -6,29 +6,23 @@ import { MdPayment } from "react-icons/md";
 
 const SideNab = () => {
   return (
-    <div className="container mx-auto flex min-h-screen">
+    <div className="container mx-auto md:flex min-h-screen">
       {/* Dashborad Side Bar */}
       <div className=" min-h-full bg-yellow-400">
-        <ul className="menu p-4">
-          <li className="text-2xl">
+        <ul className="menu p-4 space-y-4">
+          <li className="text-2xl text-center">
             Admin Panel
           </li>
-          <li className="my-5 ">
-            <NavLink className="text-2xl" to='/dashboard/addproduct'> 
+          <li >
+            <NavLink className="text-2xl" to='/dashboard/allproduct'> 
+            <BiSolidCartAdd />
+             All Product
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink className="text-2xl" to='/dashboard/addproduct' exact> 
             <IoBagAddSharp />
              Add Product
-            </NavLink>
-          </li>
-          <li className="my-5 ">
-            <NavLink className="text-2xl" to='/dashboard/updateproduct'> 
-            <IoBagAddSharp />
-             Update Product
-            </NavLink>
-          </li>
-          <li >
-            <NavLink className="text-2xl" to='/dashboard/order'> 
-            <BiSolidCartAdd />
-             Order
             </NavLink>
           </li>
           <li >
@@ -40,7 +34,7 @@ const SideNab = () => {
         </ul>
       </div>
       {/* Dashboard Content Side  */}
-      <div className="flex-1 mt-20 ml-10">
+      <div className="flex-1 mt-20 md:ml-10">
         <Outlet></Outlet>
       </div>
     </div>

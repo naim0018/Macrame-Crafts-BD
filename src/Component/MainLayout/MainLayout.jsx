@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 const MainLayout = ({ children }) => {
   return (
     <div>
-      <div className="">
+      <div className="overflow-x-hidden">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="relative">
           <div className="w-full  navbar bg-yellow-300 sticky top-0 z-20 ">
