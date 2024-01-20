@@ -14,13 +14,15 @@ const SideNab = () => {
             Admin Panel
           </li>
           <li >
-            <NavLink className="text-2xl" to='/dashboard/allproduct'> 
+            <NavLink className={`(isActive)=>{
+                isActive?"bg-black":""
+            }`} to='/dashboard/allproduct' > 
             <BiSolidCartAdd />
              All Product
             </NavLink>
           </li>
           <li className="">
-            <NavLink className="text-2xl" to='/dashboard/addproduct' exact> 
+            <NavLink className="text-2xl" to='/dashboard/addproduct'> 
             <IoBagAddSharp />
              Add Product
             </NavLink>

@@ -9,14 +9,14 @@ const Navbar = () => {
   const [len, setLen] = useState(0);
   const { user, logOut } = useContext(AuthContext);
 
-  const { data: carts } = useCartData();
+  const { data } = useCartData();
   useEffect(() => {
-    if(user){
-      setLen(carts?.length);
+    if(user && data.length ){
+      setLen(data?.length);
     }else{
       setLen("+0")
     }
-  }, [carts,user]);
+  }, [data,user]);
 
   const handelLogout = () => {
     logOut()
