@@ -12,17 +12,15 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
-
 const CardDetails = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
-
-  console.log(user)
-  const navigate = useNavigate();
-  const location = useLocation()
+  const { data, isLoading } = useData();
+  const { refetch } = useCartData();
   const [amount, setAmount] = useState(1);
-  const { data, isLoading, refetch } = useData();
-  const { id } = useParams(); 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams();
   const productId = data?.find((item) => item._id == id);
   const {
     title,
@@ -33,7 +31,6 @@ const CardDetails = () => {
     price,
     discountPrice,
     material,
-   
   } = productId || {};
 
   const handleDecrement = () => {
@@ -48,41 +45,42 @@ const CardDetails = () => {
     var totalPrice = amount * (discountPrice || price);
   }
 
-
   const cartItem = {
-    title, image, height, width, description, price, discountPrice, amount, totalPrice, email:user.email
-  }
+    title,
+    image,
+    height,
+    width,
+    description,
+    price,
+    discountPrice,
+    amount,
+    totalPrice,
+    email: user?.email,
+  };
 
-  
   // macrame-crafts-server.vercel.app
   const handelAddToCart = async () => {
-    if(user && user.email){
-      await axiosPublic.post('/carts', cartItem)
-        .then(res => {
-          if (res.status === 200) {
-            refetch();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              timer: 1500
-            });
-          }
-        })
-    }else{
-      navigate('/logIn',{state:{from:location}})
+    if (user && user.email) {
+      await axiosPublic.post("/carts", cartItem).then((res) => {
+        if (res.status === 200) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    } else {
+      navigate("/logIn", { state: { from: location } });
     }
-
-
-
   };
 
   return (
     <div className="min-h-screen">
-      {
-        isLoading && <Loadingui />
-      }
+      {isLoading && <Loadingui />}
       {productId && (
         <div className="min-h-screen grid  p-8 md:p-- md:grid-cols-2 justify-center  ">
           <div className="grid">
@@ -105,7 +103,6 @@ const CardDetails = () => {
               <p>
                 <span className="text-lg font-semibold">Height : </span>
                 <span className="text-xl font-normal text-gray-500">
-
                   {height}
                 </span>
                 <span className="h-20 border-l-[1px] border-black mx-5"></span>
