@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-
-import axios from "axios";
 import { TbCurrencyTaka } from "react-icons/tb";
-
 import ShowCartData from "./ShowCartData";
 import useCartData from "../../../hooks/useCartData";
 import Loadingui from "../Loading/Loadingui/Loadingui";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Carts = () => {
+  const axiosSecure = useAxiosSecure();
   const [emptyCarts, setEmptyCarts] = useState();
   const carts = useCartData();
   const { user } = useContext(AuthContext);
@@ -25,45 +24,34 @@ const Carts = () => {
     }
   }, [userCarts, carts]);
 
-
-  const handleDelete =  (id) => {
-try {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      try {
-        axios
-    .delete(`https://macrame-crafts-server.vercel.app/carts/${id}`)
-    .then((res) => {
-      if (res.status === 200) {
-        refetch();
-      }
-    });
-      } catch (error) {
-        
-      }
-
-
+  const handleDelete = (id) => {
+    try {
       Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
-    }
-  });
-  
-} catch (error) {
-  
-}
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          try {
+            axiosSecure.delete(`/carts/${id}`).then((res) => {
+              if (res.status === 200) {
+                refetch();
+              }
+            });
+          } catch (error) {}
 
-     
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {}
   };
 
   const subTotal = userCarts?.reduce(
@@ -83,8 +71,13 @@ try {
       {isLoading && <Loadingui />}
       {emptyCarts ? (
         <p className="flex flex-col h-screen -mt-20 items-center justify-center border  text-5xl font-bold">
-          <span className="">Your cart is <span className="text-red-600 uppercase">empty</span> </span>
-          <span className="">Please <span className="uppercase text-green-600">add</span> something to Cart</span>
+          <span className="">
+            Your cart is <span className="text-red-600 uppercase">empty</span>{" "}
+          </span>
+          <span className="">
+            Please <span className="uppercase text-green-600">add</span>{" "}
+            something to Cart
+          </span>
         </p>
       ) : (
         <>

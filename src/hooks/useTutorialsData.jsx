@@ -1,21 +1,17 @@
-
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from "react-query";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useTutorialsData = () => {
+  const axiosPublic = useAxiosPublic();
+  const tutorials = useQuery({
+    queryKey: ["tutorials"],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get("/tutorials");
+      return data;
+    },
+  });
 
-    const tutorials = useQuery({
-        queryKey:["tutorials"],
-        queryFn:async()=>{
-            const {data} =await axios.get("https://macrame-crafts-server.vercel.app/tutorials")
-            return data
-        }
-    })
-
-    return tutorials
+  return tutorials;
 };
 
 export default useTutorialsData;
-
