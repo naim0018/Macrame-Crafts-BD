@@ -1,9 +1,7 @@
 import React from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import { FaEquals } from "react-icons/fa6";
-import axios from "axios";
-import useCartData from "../../../hooks/useCartData";
-import Carts from "./Carts";
+
 
 const ShowCartData = ({ item, handleDelete }) => {
 

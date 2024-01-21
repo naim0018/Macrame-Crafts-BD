@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import useAuth from "./useAuth";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useContext } from "react";
+
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:400/'
+    baseURL: 'https://macrame-crafts-server.vercel.app/'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
-    const { logOut } = useAuth();
-
+    const { logOut } =useContext(AuthContext)
     // request interceptor to add authorization header for every secure call to teh api
     axiosSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token')
-      
         config.headers.authorization = `Bearer ${token}`;
         return config;
     }, function (error) {

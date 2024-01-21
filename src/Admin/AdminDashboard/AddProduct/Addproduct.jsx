@@ -1,19 +1,18 @@
 import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Addproduct = () => {
-  // const [selectedCity, setSelectedCity] = useState(null);
-  const [productName, setProductName] = useState()
-  const [image, setImage] = useState()
-  const [category, setCategory] = useState(null)
-  const [description, setDescription] = useState()
-  const [price, setPrice] = useState()
-  const [height, setHeight] = useState()
-  const [width, setWidth] = useState()
-
+  const axiosSecure = useAxiosSecure();
+  const [productName, setProductName] = useState();
+  const [image, setImage] = useState();
+  const [category, setCategory] = useState(null);
+  const [description, setDescription] = useState();
+  const [price, setPrice] = useState();
+  const [height, setHeight] = useState();
+  const [width, setWidth] = useState();
 
   const categories = [
     { name: "1 Layer", code: "1L" },
@@ -25,24 +24,25 @@ const Addproduct = () => {
   const products = {
     title: productName,
     image,
-    height, width, description, price
-
-  }
+    height,
+    width,
+    description,
+    price,
+  };
   const handleAddProduct = async (e) => {
-    e.preventDefault()
-    const data = await axios.post('http://localhost:400/products', products)
+    e.preventDefault();
+    const data = await axiosSecure.post("/products", products);
 
     if (data.status === 200) {
       e.target.reset();
-      setCategory(null)
+      setCategory(null);
       Swal.fire({
         title: "Good job!",
         text: "Product Has Been Added!",
-        icon: "success"
+        icon: "success",
       });
     }
-
-  }
+  };
 
   return (
     <>
@@ -50,7 +50,10 @@ const Addproduct = () => {
         <div className=" hero-content flex-col lg:flex-row-revers w-full">
           <div className="card shrink-0  w-4/5 shadow-2xl bg-base-10">
             <form onSubmit={handleAddProduct} className="card-body w-full">
-              <div className="form-control" onBlur={e => setProductName(e.target.value)}>
+              <div
+                className="form-control"
+                onBlur={(e) => setProductName(e.target.value)}
+              >
                 <label className="label">
                   <span className="label-text">Product Name</span>
                 </label>
@@ -61,7 +64,10 @@ const Addproduct = () => {
                   required
                 />
               </div>
-              <div className="form-control" onBlur={e => setImage(e.target.value)}>
+              <div
+                className="form-control"
+                onBlur={(e) => setImage(e.target.value)}
+              >
                 <label className="label">
                   <span className="label-text">Image</span>
                 </label>
@@ -85,7 +91,10 @@ const Addproduct = () => {
                 />
               </div>
 
-              <div className="form-control" onBlur={e => setDescription(e.target.value)}>
+              <div
+                className="form-control"
+                onBlur={(e) => setDescription(e.target.value)}
+              >
                 <label className="label">
                   <span className="label-text">Description</span>
                 </label>
@@ -97,7 +106,10 @@ const Addproduct = () => {
                 />
               </div>
 
-              <div className="form-control" onBlur={e => setPrice(e.target.value)}>
+              <div
+                className="form-control"
+                onBlur={(e) => setPrice(e.target.value)}
+              >
                 <label className="label">
                   <span className="label-text">Price</span>
                 </label>
@@ -109,7 +121,10 @@ const Addproduct = () => {
                 />
               </div>
               <div className="flex flex-col xl:flex-row xl:gap-5   ">
-                <div className="form-control w-full" onBlur={e => setHeight(e.target.value)}>
+                <div
+                  className="form-control w-full"
+                  onBlur={(e) => setHeight(e.target.value)}
+                >
                   <label className="label">
                     <span className="label-text">Height</span>
                   </label>
@@ -120,7 +135,10 @@ const Addproduct = () => {
                     required
                   />
                 </div>
-                <div className="form-control w-full" onBlur={e => setWidth(e.target.value)}>
+                <div
+                  className="form-control w-full"
+                  onBlur={(e) => setWidth(e.target.value)}
+                >
                   <label className="label">
                     <span className="label-text">Width</span>
                   </label>

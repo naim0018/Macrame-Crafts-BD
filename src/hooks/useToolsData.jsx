@@ -1,12 +1,12 @@
 
-import axios from "axios";
-import  { useState, useEffect } from "react";
 import { useQuery } from "react-query";
+import useAxiosPublic from "./useAxiosPublic";
 const useToolsData = () => {
+  const axiosPublic= useAxiosPublic()
     const tools = useQuery({
       queryKey:["tools"],
       queryFn:async()=>{
-          const {data} = await axios.get("https://macrame-crafts-server.vercel.app/tools")
+          const {data} = await axiosPublic.get("/tools")
           return data
       }
     })
