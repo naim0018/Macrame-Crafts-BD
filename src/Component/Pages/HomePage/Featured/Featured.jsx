@@ -10,13 +10,9 @@ const Featured = () => {
   if(isFetching){
     <Loadingui/>
   }
-  console.log(data)
-
 
    useEffect(() => {
-     // Shuffle the data to get a random order
      const shuffledData = data?.sort(() => 0.5 - Math.random());
-     // Select the first 3 items from the shuffled data
      const selectedRandomData = shuffledData?.slice(0, 4);
      setRandomData(selectedRandomData);
    }, [data]);
