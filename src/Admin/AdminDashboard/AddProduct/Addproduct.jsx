@@ -108,8 +108,8 @@ const Addproduct = () => {
                   required
                 />
               </div>
-              <div className="flex items-center justify-evenly ">
-                <div className="form-control" onBlur={e => setHeight(e.target.value)}>
+              <div className="flex flex-col xl:flex-row xl:gap-5   ">
+                <div className="form-control w-full" onBlur={e => setHeight(e.target.value)}>
                   <label className="label">
                     <span className="label-text">Height</span>
                   </label>
@@ -120,7 +120,7 @@ const Addproduct = () => {
                     required
                   />
                 </div>
-                <div className="form-control" onBlur={e => setWidth(e.target.value)}>
+                <div className="form-control w-full" onBlur={e => setWidth(e.target.value)}>
                   <label className="label">
                     <span className="label-text">Width</span>
                   </label>

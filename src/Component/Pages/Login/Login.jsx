@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaFacebook } from "react-icons/fa";
-import { ImGooglePlus2 } from "react-icons/im";
+
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { useLocation, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 
 
@@ -22,7 +23,6 @@ const handleLogin = event =>{
   signIn(email,password)
   .then (result => {
     const user = result.user;
-    console.log(user)
     if(user){
       Swal.fire({
         title: "Login in successfully",
@@ -59,7 +59,6 @@ const handleLogin = event =>{
   const handleGooglePopUp =()=>{
     googleSignIn()
     .then (result => {
-      const user = result.user;
       Swal.fire({
         title: "Login in successfully",
         showClass: {
@@ -78,9 +77,8 @@ const handleLogin = event =>{
         }
       });
       navigate(from, {replace:true});
-      
     })
-    console.log(user)
+    
   }
 
   return (
@@ -88,7 +86,7 @@ const handleLogin = event =>{
       <Helmet>
         <title>Macrame Crafts BD | Login</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-base-200 md:-mt-20">
         <div className="hero-content flex-col ">
           <div className="text-center ">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -136,9 +134,9 @@ const handleLogin = event =>{
                 <div className="mb-5">
                   <p className="text-center">OR</p>
                 </div>
-                <div className="flex justify-center gap-5">
-                    <FaFacebook className="text-4xl text-primary hover:text-yellow-600"/>
-                    <ImGooglePlus2 onClick={handleGooglePopUp} className="text-4xl text-red-600 hover:text-yellow-600"/>
+                <div className="flex justify-center rounded-full">
+                    
+                    <FcGoogle onClick={handleGooglePopUp} className="text-4xl  text-red-600"/>
                 </div>
               </div>
               <div className="form-control mt-6">
