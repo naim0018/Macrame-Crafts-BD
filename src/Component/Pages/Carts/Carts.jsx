@@ -6,6 +6,8 @@ import Loadingui from "../Loading/Loadingui/Loadingui";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useUsersData from "../../../hooks/useUsersData";
+import PendingModal from "../../../Admin/AdminDashboard/PendingOrder/PendingModal";
 
 const Carts = () => {
   const axiosSecure = useAxiosSecure();
@@ -13,6 +15,8 @@ const Carts = () => {
   const carts = useCartData();
   const { user } = useContext(AuthContext);
   const { data, refetch, isLoading } = carts;
+  const {refetch:userRefetch}=useUsersData()
+  const [openModal,setOpenModal] = useState(false)
 
   const userCarts = data?.filter((item) => item?.email === user?.email);
 
@@ -40,6 +44,7 @@ const Carts = () => {
             axiosSecure.delete(`/carts/${id}`).then((res) => {
               if (res.status === 200) {
                 refetch();
+                userRefetch();
               }
             });
           } catch (error) {}
@@ -65,6 +70,10 @@ const Carts = () => {
   );
 
   const discount = totalPrice - subTotal;
+
+  const handleOpenModal = ()=>{
+    setOpenModal(true)
+  }
 
   return (
     <div className="min-h-screen">
@@ -142,12 +151,15 @@ const Carts = () => {
                       </div>
 
                       <div className="flex justify-end">
-                        <a
-                          href=""
+                        <button
+                        onClick={handleOpenModal}
                           className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                         >
                           Checkout
-                        </a>
+                        </button>
+                        {
+                          openModal && <PendingModal openModal={openModal} setOpenModal={setOpenModal}/>
+                        }
                       </div>
                     </div>
                   </div>

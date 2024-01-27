@@ -14,6 +14,12 @@ const SideNab = () => {
             Admin Panel
           </li>
           <li >
+          <NavLink className="text-2xl" to='/dashboard/pendingorder'> 
+            <IoBagAddSharp />
+             Pending Order
+            </NavLink>
+          </li>
+          <li >
           <NavLink className="text-2xl" to='/dashboard/allproduct'> 
             <IoBagAddSharp />
              All Product

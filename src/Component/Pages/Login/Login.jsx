@@ -6,6 +6,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import useUsersData from "../../../hooks/useUsersData";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 
@@ -13,6 +15,8 @@ const Login = () => {
   const {signIn,googleSignIn,user} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosPublic = useAxiosPublic();
+  const {data}= useUsersData()
 
   const from = location.state?.from?.pathname || "/";
 const handleLogin = event =>{
@@ -41,6 +45,7 @@ const handleLogin = event =>{
           `
         }
       });
+      
     }else{
       Swal.fire({
         icon: "error",
@@ -59,24 +64,39 @@ const handleLogin = event =>{
   const handleGooglePopUp =()=>{
     googleSignIn()
     .then (result => {
-      Swal.fire({
-        title: "Login in successfully",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `
-        }
-      });
-      navigate(from, {replace:true});
+      
+      console.log(result.user.displayName)
+      const userInfo = {
+        name: result.user.displayName,
+        email: result.user.email,
+     };
+
+     axiosPublic.post('/users', userInfo)
+     .then(result=>{
+      console.log(result)
+       navigate(from, {replace:true});
+       Swal.fire({
+         title: "Login in successfully",
+         showClass: {
+           popup: `
+             animate__animated
+             animate__fadeInUp
+             animate__faster
+           `
+         },
+         hideClass: {
+           popup: `
+             animate__animated
+             animate__fadeOutDown
+             animate__faster
+           `
+         }
+       });
+     })
+
+     
+     
+      
     })
     
   }
@@ -135,8 +155,9 @@ const handleLogin = event =>{
                   <p className="text-center">OR</p>
                 </div>
                 <div className="flex justify-center rounded-full">
-                    
+                    <button>
                     <FcGoogle onClick={handleGooglePopUp} className="text-4xl  text-red-600"/>
+                    </button>
                 </div>
               </div>
               <div className="form-control mt-6">
