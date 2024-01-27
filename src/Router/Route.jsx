@@ -14,6 +14,7 @@ import Login from "../Component/Pages/Login/Login";
 import SignUp from "../Component/Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AllProduct from "../Admin/AdminDashboard/AllProduct/AllProduct";
+import PendingOrder from "../Admin/AdminDashboard/PendingOrder/PendingOrder";
 
 const router = createBrowserRouter([
   {
@@ -68,12 +69,14 @@ const router = createBrowserRouter([
         children: [
           {
             index:true,
-           
-            element: <AllProduct />,
+            element: <PendingOrder />,
           },
           {
-            
-            path: "allproduct",
+            path:"pendingorder",
+            element: <PendingOrder />,
+          },
+          {
+            path:"allproduct",
             element: <AllProduct />,
           },
           {

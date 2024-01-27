@@ -23,7 +23,7 @@
     position: absolute;
     right: 32%;
     bottom: -11px;
-  /* change the back groung color on switching from light to dark mood */
+  
     background: #ffffff;
     transform: translateZ(200px) rotate(var(--r));
     -webkit-animation: mask var(--duration) linear forwards infinite;

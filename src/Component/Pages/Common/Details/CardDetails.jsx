@@ -1,18 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useData from "../../../../hooks/useData";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import swal from "sweetalert";
-import axios from "axios";
+
 import useCartData from "../../../../hooks/useCartData";
 import Loadingui from "../../Loading/Loadingui/Loadingui";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useUsersData from "../../../../hooks/useUsersData";
 
-const CardDetails = () => {
+const CardDetails = ({orderId}) => {
+  const [productId,setProductId] = useState()
+  
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const { data, isLoading } = useData();
@@ -21,7 +23,25 @@ const CardDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
-  const productId = data?.find((item) => item._id == id);
+ 
+  
+ console.log(orderId)
+  
+  useEffect(()=>{
+    if(orderId){
+      setProductId(data?.find((item) => item._id === orderId))
+    }else{
+      setProductId(data?.find((item) => item._id === id))
+    }
+  },[id,orderId])
+
+
+
+
+
+
+
+
   const {
     title,
     image,

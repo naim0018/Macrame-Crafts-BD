@@ -21,7 +21,7 @@ const Navbar = () => {
     }else{
       setAdmin(false)
     }
-    if(user && userCarts.length ){
+    if(user && userCarts?.length ){
       setLen(userCarts?.length);
     }else{
       setLen("+0")
