@@ -12,21 +12,18 @@ import PendingModal from "../../../Admin/AdminDashboard/PendingOrder/PendingModa
 const Carts = () => {
   const axiosSecure = useAxiosSecure();
   const [emptyCarts, setEmptyCarts] = useState();
-  const carts = useCartData();
   const { user } = useContext(AuthContext);
-  const { data, refetch, isLoading } = carts;
-  const {refetch:userRefetch}=useUsersData()
+  const { data:userCarts, refetch, isLoading } = useCartData(user.email);
   const [openModal,setOpenModal] = useState(false)
 
-  const userCarts = data?.filter((item) => item?.email === user?.email);
 
   useEffect(() => {
-    if (userCarts.length !== 0) {
+    if (userCarts?.length !== 0) {
       setEmptyCarts(false);
     } else {
       setEmptyCarts(true);
     }
-  }, [userCarts, carts]);
+  }, [userCarts]);
 
   const handleDelete = (id) => {
     try {
@@ -44,7 +41,7 @@ const Carts = () => {
             axiosSecure.delete(`/carts/${id}`).then((res) => {
               if (res.status === 200) {
                 refetch();
-                userRefetch();
+                
               }
             });
           } catch (error) {}
@@ -158,7 +155,11 @@ const Carts = () => {
                           Checkout
                         </button>
                         {
-                          openModal && <PendingModal openModal={openModal} setOpenModal={setOpenModal}/>
+                          openModal && <PendingModal 
+                          userCarts={userCarts}
+                          email={user.email}
+                          subTotal={subTotal}
+                          openModal={openModal} setOpenModal={setOpenModal}/>
                         }
                       </div>
                     </div>
