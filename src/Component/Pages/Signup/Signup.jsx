@@ -5,12 +5,13 @@ import { FaFacebook } from "react-icons/fa";
 import { ImGooglePlus2 } from "react-icons/im";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
    const { register, handleSubmit, formState: { errors } } = useForm();
-   const { createUser } = useContext(AuthContext);
+   const { createUser,googleSignIn } = useContext(AuthContext);
    const navigate = useNavigate();
 
    const onSubmit = async (data) => {
@@ -34,6 +35,45 @@ const SignUp = () => {
       }
    }
 
+   const handleGooglePopUp =()=>{
+      googleSignIn()
+      .then (result => {
+        
+        console.log(result.user.displayName)
+        const userInfo = {
+          name: result.user.displayName,
+          email: result.user.email,
+       };
+  
+       axiosPublic.post('/users', userInfo)
+       .then(result=>{
+        console.log(result)
+         navigate(from, {replace:true});
+         Swal.fire({
+           title: "Login in successfully",
+           showClass: {
+             popup: `
+               animate__animated
+               animate__fadeInUp
+               animate__faster
+             `
+           },
+           hideClass: {
+             popup: `
+               animate__animated
+               animate__fadeOutDown
+               animate__faster
+             `
+           }
+         });
+       })
+  
+       
+       
+        
+      })
+      
+    }
    return (
       <div>
          <Helmet>
@@ -87,13 +127,15 @@ const SignUp = () => {
                         <button type="submit" className="btn btn-primary">Sign up</button>
                      </div>
                      <div>
-                        <div className="mb-5">
-                           <p className="text-center">OR</p>
+                        <div className="mb-5 text-center">
+                           <p className="">OR</p>
+                           <p className="text-sm text-gray-500">Already have an account Please <Link to='/login' className="text-blue-600 font-bold">Login</Link></p>
                         </div>
-                        <div className="flex justify-center gap-5">
-                           <FaFacebook className="text-4xl text-primary hover:text-yellow-600" />
-                           <ImGooglePlus2 className="text-4xl text-red-600 hover:text-yellow-600" />
-                        </div>
+                        <div className="flex justify-center rounded-full">
+                    <button>
+                    <FcGoogle onClick={handleGooglePopUp} className="text-4xl  text-red-600"/>
+                    </button>
+                </div>
                      </div>
                   </form>
                </div>

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ShowCartData from "../../../Component/Pages/Carts/ShowCartData";
 
-const PendingModal = ({ subTotal,email,userCarts,openModal, setOpenModal }) => {
-  const [name,setName]=useState()
+const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenModal }) => {
+  const [email,setEmail]=useState()
   const [address,setAddress]=useState()
   const [city,setCity]=useState()
   const [country,setCountry]=useState()
@@ -52,9 +52,10 @@ const PendingModal = ({ subTotal,email,userCarts,openModal, setOpenModal }) => {
                       {/* Shipping Details form */}
                       <form className="space-y-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium">Name</label>
+                          <label className="text-sm font-medium">Email</label>
                           <input
-                          onBlur={e=>setName(e.target.value)}
+                          onBlur={e=>setEmail(e.target.value)}
+                          value={userEmail}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your name"
                             required
