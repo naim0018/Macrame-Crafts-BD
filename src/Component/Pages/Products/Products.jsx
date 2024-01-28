@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+ import { useEffect, useState } from "react";
 import useData from "../../../hooks/useData";
 import Cards from "../Common/Cards/Cards";
 import { Helmet } from "react-helmet-async";
-import Loading from "../Loading/Loading";
 import Loadingui from "../Loading/Loadingui/Loadingui";
-import { Dropdown } from "primereact/dropdown";
+
 
 const Products = () => {
 

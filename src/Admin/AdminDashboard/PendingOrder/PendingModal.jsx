@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import { TbCurrencyTaka } from "react-icons/tb";
+import ShowCartData from "../../../Component/Pages/Carts/ShowCartData";
 
-const PendingModal = ({ openModal, setOpenModal }) => {
-  // const [openModal, setOpenModal] = useState(false);
+const PendingModal = ({ subTotal,email,userCarts,openModal, setOpenModal }) => {
+  const [name,setName]=useState()
+  const [address,setAddress]=useState()
+  const [city,setCity]=useState()
+  const [country,setCountry]=useState()
+  // const [email,setEmail]=useState()
 
 
+  const handleShoppingDetails = (e) =>{
+    e.preventDefault();
     
-
+  }
 
   return (
     <div>
@@ -32,7 +40,7 @@ const PendingModal = ({ openModal, setOpenModal }) => {
               >
                 Close
               </button>
-              <div className="grid gap-8 lg:grid-cols-2">
+              <form onSubmit={handleShoppingDetails} className="grid gap-8 lg:grid-cols-2">
                 <div className="space-y-8 lg:mb-6">
                   <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
                     <div className="flex flex-col space-y-1.5 lg:p-6 p-2">
@@ -46,13 +54,16 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Name</label>
                           <input
+                          onBlur={e=>setName(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your name"
+                            required
                           />
                         </div>
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Address</label>
                           <input
+                          onBlur={e=>setAddress(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your address"
                           />
@@ -60,6 +71,7 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                         <div className="space-y-2">
                           <label className="text-sm font-medium">City</label>
                           <input
+                          onBlur={e=>setCity(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your city"
                           />
@@ -67,6 +79,7 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Country</label>
                           <input
+                          onBlur={e=>setCountry(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your country"
                           />
@@ -125,7 +138,7 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                     </div>
                   </div>
                 </div>
-
+{/* OrderSummery */}
                 <div className="space-y-8 lg:mb-0 mb-6">
                   <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
                     <div className="flex flex-col space-y-1.5 lg:p-6 p-2">
@@ -136,21 +149,12 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                     {/* Checkout form */}
                     <div className="lg:p-6 p-2">
                       <div className="space-y-4">
-                        <div className="flex justify-between">
-                          <span>Product 1</span>
-                          <span>$99.99</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Product 2</span>
-                          <span>$49.99</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Product 3</span>
-                          <span>$29.99</span>
-                        </div>
+                        {
+                          userCarts.map(item=> <ShowCartData key={item._id} item={item} />)
+                        }
                         <div className="border-t border-gray-200  mt-4 pt-4 flex justify-between font-semibold">
                           <span>Total</span>
-                          <span>$179.97</span>
+                          <span className="flex items-center justify-center">{subTotal}<TbCurrencyTaka /></span>
                         </div>
                       </div>
                     </div>
@@ -159,14 +163,14 @@ const PendingModal = ({ openModal, setOpenModal }) => {
                         onClick={() => {
                           setOpenModal(false);
                         }}
-                        className="inline-flex items-center bg-slate-950 text-white justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+                        className="inline-flex items-center bg-slate-950 text-white justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
                       >
                         Complete Purchase
                       </button>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </main>
           </div>
         </div>

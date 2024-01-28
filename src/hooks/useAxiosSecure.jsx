@@ -5,8 +5,8 @@ import { useContext } from "react";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://macrame-crafts-server.vercel.app/'
-    // baseURL: 'http://localhost:400/'
+    // baseURL: 'https://macrame-crafts-server.vercel.app/'
+    baseURL: 'http://localhost:400/'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
