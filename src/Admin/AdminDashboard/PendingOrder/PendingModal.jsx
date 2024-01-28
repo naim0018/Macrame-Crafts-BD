@@ -150,7 +150,7 @@ const PendingModal = ({ subTotal,email,userCarts,openModal, setOpenModal }) => {
                     <div className="lg:p-6 p-2">
                       <div className="space-y-4">
                         {
-                          userCarts.map(item=> <ShowCartData key={item._id} item={item} />)
+                          userCarts?.map(item=> <ShowCartData key={item._id} item={item} />)
                         }
                         <div className="border-t border-gray-200  mt-4 pt-4 flex justify-between font-semibold">
                           <span>Total</span>
