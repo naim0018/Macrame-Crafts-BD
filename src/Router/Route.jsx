@@ -8,13 +8,14 @@ import Tutorials from "../Component/Pages/Tutorials/Tutorials";
 import CardDetails from "../Component/Pages/Common/Details/CardDetails";
 import Carts from "../Component/Pages/Carts/Carts";
 import DashBoard from "../Admin/Dashboard/DashBoard";
-import Addproduct from "../Admin/AdminDashboard/AddProduct/Addproduct";
+
 import PaymentHistroy from "../Admin/AdminDashboard/PaymentHistroy/PaymentHistroy";
 import Login from "../Component/Pages/Login/Login";
 import SignUp from "../Component/Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AllProduct from "../Admin/AdminDashboard/AllProduct/AllProduct";
 import PendingOrder from "../Admin/AdminDashboard/PendingOrder/PendingOrder";
+import Addproduct from "../Admin/AdminDashboard/AddProduct/Addproduct";
 
 const router = createBrowserRouter([
   {
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
           },
           {
             path: "addproduct",
-            element: <Addproduct />,
+            element: <Addproduct/>,
           },
           {
             path: "paymenthistroy",
