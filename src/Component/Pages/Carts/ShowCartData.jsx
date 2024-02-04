@@ -37,7 +37,7 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
             : ""
         }
       >
-        {admin && <p className="text-center ">{item.email}</p>}
+        {/* {admin && <p className="text-center ">{item.email}</p>} */}
         <div className={admin ? "col-span-3 border-x border-x-black p-3" : ""}>
           <ul className="space-y-4">
             <li className="flex items-center gap-4">
