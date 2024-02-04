@@ -72,7 +72,6 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
                       <dd className="inline ">{price}</dd>
                     )}
                   </div>
-
                   <div>
                     <dd className="inline">{discountPrice}</dd>
                   </div>
@@ -139,7 +138,7 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
               Pending
             </button>
             {
-              openModal && <PendingModal openModal={openModal} setOpenModal={setOpenModal}/>
+              openModal && <PendingModal openModal={openModal} setOpenModal={setOpenModal} />
             }
           </div>
         )}
