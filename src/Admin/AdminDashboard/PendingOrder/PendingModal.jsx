@@ -60,6 +60,17 @@ const PendingModal = ({ subTotal,email,userCarts,openModal, setOpenModal }) => {
                             required
                           />
                         </div>
+                        
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium">Contact No</label>
+                          <input
+                          onBlur={e=>setName(e.target.value)}
+                            className="flex h-10 w-full rounded-md border px-3"
+                            placeholder="Enter your Number"
+                            required
+                          />
+                        </div>
+
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Address</label>
                           <input
