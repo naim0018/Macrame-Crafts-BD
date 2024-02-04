@@ -1,19 +1,41 @@
 import React, { useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ShowCartData from "../../../Component/Pages/Carts/ShowCartData";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenModal }) => {
-  const [email,setEmail]=useState()
+  const [email,setEmail]=useState(userEmail)
+  const [number,setNumber]=useState()
   const [name,setName]=useState()
   const [address,setAddress]=useState()
   const [city,setCity]=useState()
   const [country,setCountry]=useState()
   // const [email,setEmail]=useState()
-// console.log(userCarts)
-
-  const handleShoppingDetails = (e) =>{
+console.log(userCarts)
+const axiosPublic=useAxiosPublic()
+  const handleShoppingDetails =async (e) =>{
     e.preventDefault();
     console.log("on Purchase")
+    const pendingOrder = {
+      name,email,number,address,city,country,userCarts
+    }
+    if(userCarts){
+      await axiosPublic.post("/pendingOrder",pendingOrder)
+      .then(res=>{
+        console.log(res)
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your purchase has been Complete",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+
+      })
+    }
+    
   }
 
   return (
@@ -41,7 +63,7 @@ const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenMod
               >
                 Close
               </button>
-              <form  className="grid gap-8 lg:grid-cols-2">
+              <form onSubmit={handleShoppingDetails} className="grid gap-8 lg:grid-cols-2">
                 <div className="space-y-8 lg:mb-6">
                   <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
                     <div className="flex flex-col space-y-1.5 lg:p-6 p-2">
@@ -65,7 +87,7 @@ const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenMod
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Contact No</label>
                           <input
-                          onBlur={e=>setName(e.target.value)}
+                          onBlur={e=>setNumber(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your Number"
                             required
@@ -77,6 +99,7 @@ const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenMod
                           <input
                          
                           defaultValue={userEmail}
+                          onBlur={e=>setEmail(e.target.value)}
                             className="flex h-10 w-full rounded-md border px-3"
                             placeholder="Enter your Email"
                             required
@@ -188,7 +211,7 @@ const PendingModal = ({ subTotal,email:userEmail,userCarts,openModal, setOpenMod
                         // onClick={() => {
                         //   setOpenModal(false);
                         // }}
-                        onSubmit={handleShoppingDetails}
+                        
                         className="inline-flex items-center bg-slate-950 text-white justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
                       >
                         Complete Purchase

@@ -137,9 +137,9 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
             >
               Pending
             </button>
-            {
-              openModal && <PendingModal openModal={openModal} setOpenModal={setOpenModal} />
-            }
+            {openModal && (
+              <PendingModal openModal={openModal} setOpenModal={setOpenModal} />
+            )}
           </div>
         )}
       </div>
@@ -148,5 +148,3 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
 };
 
 export default ShowCartData;
-
-
