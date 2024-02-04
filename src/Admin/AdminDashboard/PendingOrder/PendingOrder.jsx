@@ -1,20 +1,22 @@
-
-import useCartData from '../../../hooks/useCartData';
-import ShowCartData from '../../../Component/Pages/Carts/ShowCartData';
+import ShowCartData from "../../../Component/Pages/Carts/ShowCartData";
+import usePendingOrderData from "../../../hooks/usePendingOrderData";
 
 const PendingOrder = () => {
+  const { data } = usePendingOrderData();
 
-  const {data} = useCartData();
-  
-
+  console.log(data);
 
   return (
     <div>
-      {
-        data?.map(user => <ShowCartData key={user?._id} item={user} admin={true}/> )
-      }
+      {data?.map((user) => (
+        <div className="" key={user?._id}>
+          {user?.userCarts?.map((item) => (
+            <ShowCartData key={item._id} item={item} admin={true} />
+          ))}
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default PendingOrder
+export default PendingOrder;
