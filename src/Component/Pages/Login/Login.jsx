@@ -12,11 +12,11 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 const Login = () => {
-  const {signIn,googleSignIn,user} = useContext(AuthContext);
+  const {signIn,googleSignIn} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
-  const {data}= useUsersData()
+  
 
   const from = location.state?.from?.pathname || "/";
 const handleLogin = event =>{
@@ -64,7 +64,7 @@ const handleLogin = event =>{
   const handleGooglePopUp =()=>{
     googleSignIn()
     .then (result => {
-      
+    
       console.log(result.user.displayName)
       const userInfo = {
         name: result.user.displayName,
