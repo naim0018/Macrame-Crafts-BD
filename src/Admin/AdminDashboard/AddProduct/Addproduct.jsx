@@ -106,7 +106,8 @@ const Addproduct = () => {
                 />
               </div>
 
-              <div
+             <div className="grid grid-cols-2 gap-5">
+             <div
                 className="form-control"
                 onBlur={(e) => setPrice(e.target.value)}
               >
@@ -115,11 +116,26 @@ const Addproduct = () => {
                 </label>
                 <input
                   type="number"
-                  placeholder="Number"
+                  placeholder="Price"
                   className="input input-bordered"
                   required
                 />
               </div>
+              <div
+                className="form-control"
+                onBlur={(e) => setPrice(e.target.value)}
+              >
+                <label className="label">
+                  <span className="label-text">Discount Price</span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="Discount Price"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+             </div>
               <div className="flex flex-col xl:flex-row xl:gap-5   ">
                 <div
                   className="form-control w-full"
