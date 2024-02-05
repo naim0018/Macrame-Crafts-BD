@@ -3,10 +3,16 @@ import { useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import UpdateProduct from "../../../../Admin/AdminDashboard/UpdateProduct/UpdateProduct";
+import { HandymanOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useData from "../../../../hooks/useData";
 
-const Cards = ({ data, admin }) => {
+const Cards = ({ data, admin ,refetch}) => {
   const [discount, setDiscount] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
+  const axiosSecure = useAxiosSecure()
 
   const {
     _id,
@@ -18,7 +24,35 @@ const Cards = ({ data, admin }) => {
     price,
     discountPrice,
     material,
+    category
   } = data;
+
+  const handleDelete=()=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+
+         await axiosSecure.delete(`/products/${_id}`)
+         .then(res=>{
+          refetch();
+          console.log(res)
+         })
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+  }
 
   return (
     <div className="border max-w-full  border-black rounded-lg shadow-lg ">
@@ -41,7 +75,7 @@ const Cards = ({ data, admin }) => {
           <hr className="border border-black" />
         </div>
         {/* Price  */}
-        <div className="p-5 flex items-center justify-center gap-5">
+        <div className="p-5 ">
           {discountPrice ? (
             <div className=" flex items-center justify-center gap-2">
               <del className="text-sm text-red-400 ">৳{price}</del>
@@ -56,17 +90,32 @@ const Cards = ({ data, admin }) => {
               {price}
             </p>
           )}
-          <div className="border rounded-lg border-black">
+          <div className="flex items-center justify-center mt-5 gap-5">
+          <div className=" border rounded-lg border-black">
             <Link to={`/cardDetails/${_id}`}>
               <button className="btn bg-white border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-black hover:border-b-black">
                 Details
               </button>
             </Link>
           </div>
+            {
+              admin && (
+                <div className=" border rounded-lg border-black hover:border-r-red-600 hover:border-b-red-600">
+
+                <button
+                onClick={handleDelete}
+                className="btn border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-red-600 hover:border-b-red-600 bg-red-500 text-white hover:text-red-600"
+              >
+                Delete
+              </button>
+                </div>
+              )
+            }
+
           {admin && (
             <div className="border rounded-lg border-black">
               <button
-                className="btn bg-white border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-black hover:border-b-black"
+                className="btn border border-b-2 border-r-2 border-transparent  hover:bg-white hover:border-r-2 hover:border-b-2 hover:border-r-green-600 hover:border-b-green-600 bg-green-500 text-white hover:text-green-600"
                 onClick={() => setOpenModal(true)}
               >
                 Update
@@ -105,12 +154,18 @@ const Cards = ({ data, admin }) => {
                       ></path>
                     </g>
                   </svg>
-                  <UpdateProduct />
+                  <UpdateProduct data={data} setOpenModal={setOpenModal}/>
                 
                 </div>
               </div>
+
+
+
             </div>
+            
           )}
+
+          </div>
         </div>
       </div>
     </div>

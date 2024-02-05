@@ -33,7 +33,7 @@ const ShowCartData = ({ item, handleDelete, admin }) => {
       <div
         className={
           admin
-            ? "grid sm:grid-cols-5 items-center border   border-gray-400"
+            ? "grid sm:grid-cols-5 items-center"
             : ""
         }
       >

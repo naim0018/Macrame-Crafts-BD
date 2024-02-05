@@ -9,8 +9,11 @@ const PendingOrder = () => {
   return (
     <div>
       {data?.map((user) => (
-        <div className="grid grid-cols-5" key={user?._id}>
+        <div className="grid grid-cols-5 border border-black" key={user?._id}>
+          {
+            user?.userCarts.length &&
           <p>{user?.email}</p>
+          }
           <div className="col-span-4">
           {user?.userCarts?.map((item) => (
             <ShowCartData key={item._id} item={item} admin={true} />

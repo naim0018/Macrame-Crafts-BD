@@ -35,13 +35,6 @@ const CardDetails = ({orderId}) => {
     }
   },[id,orderId])
 
-
-
-
-
-
-
-
   const {
     title,
     image,
@@ -51,7 +44,9 @@ const CardDetails = ({orderId}) => {
     price,
     discountPrice,
     material,
+    category
   } = productId || {};
+  
 
   const handleDecrement = () => {
     if (amount > 1) {
@@ -75,6 +70,7 @@ const CardDetails = ({orderId}) => {
     discountPrice,
     amount,
     totalPrice,
+    category,
     email: user?.email,
   };
 
@@ -132,9 +128,15 @@ const CardDetails = ({orderId}) => {
                 </span>
               </p>
               <p>
-                <span className="text-lg font-semibold">Material </span>
+                <span className="text-lg font-semibold">Material : </span>
                 <span className="text-lg font-normal text-gray-500 ">
                   {material}
+                </span>
+              </p>
+              <p>
+                <span className="text-lg font-semibold">Category : </span>
+                <span className="text-lg font-normal text-gray-500 ">
+                  {category}
                 </span>
               </p>
             </div>
