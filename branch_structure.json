@@ -1,0 +1,27 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "azizul",
+    "jahid",
+    "main",
+    "naim",
+    "origin",
+    "test"
+  ],
+  "parent": {
+    "azizul": "main",
+    "jahid": "main",
+    "main": null,
+    "naim": "main",
+    "origin": "main",
+    "test": "main"
+  },
+  "order": [
+    "main",
+    "azizul",
+    "jahid",
+    "naim",
+    "origin",
+    "test"
+  ]
+}
